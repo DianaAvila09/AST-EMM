@@ -1,0 +1,210 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuMain.aspx.cs" Inherits="WebOptimusMenu.MenuMain" %>
+
+<%@ Register assembly="DevExpress.Web.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+
+
+
+
+
+<%@ Register assembly="DevExpress.Web.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx1" %>
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .style2
+        {
+            width: 100%;
+        }
+        .style8
+        {
+            width: 750px;
+        }
+        .style9
+        {
+            width: 153px;
+        }
+        .style10
+        {
+            width: 47px;
+        }
+        .style11
+        {
+            width: 43px;
+            height: 34px;
+        }
+        </style>
+    <link href="../Styles/Default.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+    // <![CDATA[
+        var demoCounter;
+       
+        function demoInit() {
+            demoCounter = 15;
+            demoUpdate();
+        }
+        function demoTick() {
+            demoCounter -= 1;
+            demoUpdate();
+        }
+        function demoUpdate() {
+            if (demoCounter == 0) {
+                PopupControl.Show();
+                Timer1.SetEnabled(false);
+            }
+            //        else {
+            //            Timer1.SetEnabled(false);
+            //            
+            //        }
+        }
+    // ]]> 
+    </script>
+</head>
+<body topmargin="0" leftmargin="0" rightmargin="0" bgcolor="#f2f8ff" >
+    <form id="form1" runat="server" >
+    <div id="TopDiv" runat="server" >
+        <table class="style2" bgcolor="#F2F8FF">
+            <tr >
+                <td align ="left" class="style10">
+                    <img alt="" class="style11" src="Images/logoActivePlanning.gif" /></td>
+                <td align="left" valign="middle" class="style9">
+                    <dx:ASPxLabel ID="ASPxLabel4" runat="server" Font-Names="Book Antiqua" 
+                        Font-Size="15pt" Text="Active Planning" Width="185px" Font-Bold="True" 
+                        ForeColor="#000066">
+                    </dx:ASPxLabel>
+                </td>
+                <td align="left" valign="top" class="style9">
+                    <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="ASPxLabel">
+                    </dx:ASPxLabel>
+                </td>
+                <td align="left" valign="top" class="style8">
+                    <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="ASPxLabel">
+                    </dx:ASPxLabel>
+                </td>
+                <td align="right" valign="top">
+                    <asp:LinkButton ID="LinkButton1" runat="server" Font-Names="Verdana" 
+                        Font-Size="8pt" onclick="LinkButton1_Click">Sign out</asp:LinkButton>
+                </td>
+            </tr>
+        </table>
+        </div>
+    <div id="ContentDiv" runat="server">
+    
+        <table width="100%" style="height: 500px">
+            <tr>
+                <td align="left" valign="top" height="100%">
+                    <dx:ASPxTimer ID="ASPxTimer1" runat="server" Interval="1000" 
+                        ClientInstanceName="Timer1" Enabled="False">
+                        <ClientSideEvents Init="function(s, e) {  demoInit(); }" 
+                            Tick="function(s, e) { demoTick(); }" />
+                    </dx:ASPxTimer>
+                    <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" 
+                        CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua" 
+                        Height="850px">
+                        <Panes>
+                            <dx:SplitterPane MaxSize="210px" MinSize="210px" 
+                                ShowCollapseBackwardButton="True" Size="210px">
+                                <PaneStyle BackColor="#F2F8FF">
+                                    <Paddings PaddingLeft="0px" PaddingRight="0px" PaddingTop="0px" />
+                                </PaneStyle>
+                                <ContentCollection>
+<dx:SplitterContentControl runat="server" SupportsDisabledAttribute="True">
+    <dx:ASPxNavBar ID="ASPxNavBar1" runat="server" 
+        CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua" 
+        SpriteCssFilePath="~/App_Themes/Aqua/{0}/sprite.css" Width="100%" 
+        Target="contentUrlPane" AllowSelectItem="True" AutoCollapse="True" 
+        Font-Bold="False" Font-Names="Verdana" Font-Size="Small">
+        <Groups>
+            <dx:NavBarGroup Text="PLANNING" Target="contentUrlPane" Expanded="False">
+                <HeaderImage Height="24px" Url="~/Images/iconos/32x32/Users.png">
+                </HeaderImage>
+                <Items>
+                    <dx:NavBarItem NavigateUrl="~/ActivePlanning/SchedulerBasic.aspx" Selected="True" 
+                        Text="Load planning">
+                        <Image Url="~/Images/iconos/16x16/play.png">
+                        </Image>
+                    </dx:NavBarItem>
+                </Items>
+            </dx:NavBarGroup>
+            <dx:NavBarGroup Text="FINANCE" Expanded="False">
+            </dx:NavBarGroup>
+            <dx:NavBarGroup Text="LOGISTICS">
+            </dx:NavBarGroup>
+            <dx:NavBarGroup Text="DASHBOARD" Expanded="False">
+            </dx:NavBarGroup>
+            <dx:NavBarGroup Text="SECURITY" Expanded="False">
+                <Items>
+                    <dx:NavBarItem NavigateUrl="~/ActiveSecurity/UsrLogin.aspx" 
+                        Target="contentUrlPane" Text="Manage Login Details">
+                        <Image Url="~/Images/iconos/16x16/play.png">
+                        </Image>
+                    </dx:NavBarItem>
+                </Items>
+            </dx:NavBarGroup>
+        </Groups>
+        <LoadingPanelImage Url="~/App_Themes/Aqua/Web/nbLoading.gif">
+        </LoadingPanelImage>
+        <Paddings PaddingTop="0px" PaddingLeft="0px" PaddingRight="0px" />
+    </dx:ASPxNavBar>
+                                    </dx:SplitterContentControl>
+</ContentCollection>
+                            </dx:SplitterPane>
+                            <dx:SplitterPane Name="ContentUrlPane" 
+                                ContentUrlIFrameName="contentUrlPane" AutoHeight="True" AutoWidth="True" 
+                                ScrollBars="Vertical">
+                                <ContentCollection>
+<dx:SplitterContentControl runat="server" SupportsDisabledAttribute="True"></dx:SplitterContentControl>
+</ContentCollection>
+                            </dx:SplitterPane>
+                        </Panes>
+                        <Styles CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua">
+                        </Styles>
+                        <Images SpriteCssFilePath="~/App_Themes/Aqua/{0}/sprite.css">
+                        </Images>
+                    </dx:ASPxSplitter>
+                </td>
+            </tr>
+        </table>
+    </div>
+       <div >
+          <table width="100%" bgcolor="#F2F8FF">
+             <tr>
+                <td align="center" height="20%">
+                     <p align="center" 
+                         style="font-family: 'Arial', Times, serif; font-size: 9pt">Copyright (c) 2014 AA Trading. All rights reserved.        Design and Created by: 
+                        <a>KSK Consultores</a>
+                    </p>
+                </td>
+             </tr>
+          </table>
+        </div>
+
+    <dx:ASPxPopupControl ID="ASPxPopupControl1" runat="server" 
+        ClientInstanceName="PopupControl" CloseAction="CloseButton" Height="500px" 
+        Modal="True" PopupHorizontalAlign="WindowCenter" 
+        PopupVerticalAlign="WindowCenter" Width="700px">
+        <ClientSideEvents CloseButtonClick="function(s, e) {
+	Timer1.SetEnabled(true); 
+	demoInit();
+}" />
+        <ContentCollection>
+<dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True">
+    <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="False" 
+        Text="timer off">
+        <ClientSideEvents Click="function(s, e) {
+	Timer1.SetEnabled(false);
+     PopupControl.Hide();
+}" />
+    </dx:ASPxButton>
+            </dx:PopupControlContentControl>
+</ContentCollection>
+    </dx:ASPxPopupControl>
+    </form>
+</body>
+</html>
