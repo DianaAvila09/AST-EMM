@@ -1,0 +1,32 @@
+﻿body {
+}
+
+.contenedor {
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px
+}
+
+.contenedorMenu {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px
+}
+
+.columna-derecha {
+    text-align:right
+}
+
+.columna-izquierda {
+    text-align: left;
+    padding:0px
+}
+
+.lineColor{
+    background-color:red
+}
+
+
+
