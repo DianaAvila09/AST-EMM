@@ -16,8 +16,8 @@ namespace CapaPresentacion
         protected void Page_Load(object sender, EventArgs e)
         {
             this.lblMsgErr.Visible = false;
-            this.txtEmail.Text = "shamelius77@gmail.com";
-            this.txtPass.Text = "123456";
+            //this.txtEmail.Text = "shamelius77@gmail.com";
+            //this.txtPass.Text = "123456";
 
             this.lblAnio.Text = DateTime.Now.Year.ToString();
        
