@@ -1,7 +1,7 @@
 ﻿<%@ Page language="C#" AutoEventWireup="true" CodeBehind="gestionAst.aspx.cs" Inherits="CapaPresentacion.main.gestionAst"%> 
 
 
-<%@ Register Assembly="DevExpress.Web.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -61,7 +61,7 @@
                             <Settings VerticalScrollableHeight="500" VerticalScrollBarMode="Visible" />
                             <SettingsBehavior AllowSort="False" />
                             <SettingsPopup>
-                            <FilterControl AutoUpdatePosition="False"></FilterControl>
+                            <%--<FilterControl AutoUpdatePosition="False"></FilterControl>--%>
                             </SettingsPopup>
                             <Columns>
                                 <dx:GridViewDataTextColumn Caption="Num. Documento" VisibleIndex="0" FieldName="nombre_docto" Width="200px">

@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="capAst.aspx.cs" Inherits="CapaPresentacion.main.capAst" %>
 
-<%@ Register Assembly="DevExpress.Web.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -629,7 +629,7 @@
                 <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar"  ID="btnGrabar" OnClick="btnGrabar_Click"/>
            </div>
             <div class="col-auto" >
-                <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar y Enviar Notificacion" ID="btnGrabaFinal"  OnClick="btnGrabaFinal_Click"/> 
+                <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar y Enviar Notificacion"  Enabled="false" ID="btnGrabaFinal" OnClick="btnGrabaFinal_Click"/> 
            </div>
             <div class="col-auto" >
                 <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Cancelar"  ID="btnCancelar" OnClick="btnCancelar_Click" /> 

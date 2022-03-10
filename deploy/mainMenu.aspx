@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mainMenu.aspx.cs" Inherits="CapaPresentacion.mainMenu" %>
 
-<%@ Register assembly="DevExpress.Web.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -8,8 +8,8 @@
 <head runat="server">
     <title>MangaDoc-EST</title>
 
-     <link rel="stylesheet" href="../css/bootstrap.css" />
-     <link rel="stylesheet" href="../css/StyleSheet.css" />
+     <link rel="stylesheet" href="./css/bootstrap.css" />
+     <link rel="stylesheet" href="./css/StyleSheet.css" />
 </head>
 <body style="background-color:#dadada">
     <form id="form1" runat="server">
