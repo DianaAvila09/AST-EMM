@@ -6,13 +6,19 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaPresentacion.AppCode.BLL;
 using System.Data;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
 
 namespace CapaPresentacion.main
 {
     public partial class capAst : System.Web.UI.Page
     {
         bool _botonNuevo  ;
+        bool _GrabacionFinal;
         Int32 _astid;
+        string _roleNombre;
+        Int16 _usrIdLogin;
         clsDocAst objDocAst = new clsDocAst();
         clsAstGpoAprobacion objAstGpoAprobacion = new clsAstGpoAprobacion();
         clsAstPersonalInvo objPersonalInvolucrado = new clsAstPersonalInvo();
@@ -27,11 +33,15 @@ namespace CapaPresentacion.main
 
                 if ((Session["useremail"] == null) || (Session["useremail"].ToString() == ""))
                 {
-                    Response.Redirect("login.aspx");
+                    Response.Redirect("../login.aspx");
                 }
 
 
                 _astid = Convert.ToInt32(Request.QueryString["astid"]);
+                
+
+                this.lblMotivoRechazo.Visible = false;
+                this.txtMotivorechazo.Visible = false;
 
 
                 if (_astid != 0)
@@ -80,6 +90,9 @@ namespace CapaPresentacion.main
                 }
                 else
                 {
+                    _usrIdLogin = Convert.ToInt16(Session["userid"].ToString());
+                    _roleNombre = Session["rol_nombre"].ToString();
+
                     BucarAST_Formato();
                     BuscarAST_SecuenciaTrabajo();
                     BuscarAST_PracticasProhibidas();
@@ -113,9 +126,11 @@ namespace CapaPresentacion.main
                 this.DeptoCombo();
 
                 this.txtArea.Focus();
-          
 
-           
+              
+
+
+
         }
 
         protected void BucarAST_Formato()
@@ -140,7 +155,63 @@ namespace CapaPresentacion.main
                 txtMotivorechazo.Text = dr["motivo_rechazo"].ToString();      
                 txtContactoPlanta.Text = dr["email_contactoPlanta"].ToString();
                 txtPlanRespuesta.Text = dr["plan_respuesta"].ToString();
+                txtElabora.Text = dr["elaboro"].ToString();
+                //_role = dr["rol_nombre"].ToString();
+
+                this.lblEstatus2.Text = dr["estatus"].ToString();
+
+                switch (this.lblEstatus2.Text)
+                {
+                    case "Capturado":
+                        this.lblEstatus2.CssClass = "text-primary";
+                        break;
+                    case "En Proceso":
+                        this.lblEstatus2.CssClass = "text-primary";
+                        break;
+                    case "Autorizado":
+                        this.lblEstatus2.CssClass = "text-success";
+                        break;
+                    case "Rechazado":
+                        this.lblEstatus2.CssClass = "text-danger";
+                        break;
+                    default:
+                        this.lblEstatus2.CssClass = "text-primary";
+                        break;
+                }
+
+
+                if (dr["estatus"].ToString() == "Rechazado" || dr["estatus"].ToString() == "Autorizado")
+                {
+                    this.btnGrabaFinal.Enabled = false;
+                    this.btnGrabar.Enabled = false;
+                    this.btnEliminar.Enabled = false;
+
+                    this.txtAutorizaContacto.Text = txtContactoPlanta.Text;
+
+                }
+                else
+                {
+                    // validar si es usuario que se firma es el mismo que es dueño del AST
+
+                    if (  _usrIdLogin != Convert.ToInt16(dr["user_id"].ToString()) && (_roleNombre != "admin_rol" )   )
+                    {
+                        this.btnGrabaFinal.Enabled = false;
+                        this.btnGrabar.Enabled = false;
+                        this.btnEliminar.Enabled = false;
+                    }
+                }
+
+               if ( txtMotivorechazo.Text != "")
+                {
+                    this.lblMotivoRechazo.Visible = true;
+                    this.txtMotivorechazo.Visible = true;
+                }
+
+               
+
+
             }
+
 
 
         }
@@ -560,10 +631,45 @@ namespace CapaPresentacion.main
         protected void btnGrabaFinal_Click(object sender, EventArgs e)
         {
 
+            _GrabacionFinal = true;
+
+            if (_botonNuevo)
+            {
+                if (validaCampos())
+                {
+                    InsertarDocto();
+                }
+                else
+                {
+                    return;
+                }
+
+            }
+            else
+            {
+                ActualizarDocto();
+
+            }
+
+            // lanza el email de notificaciones
+               
+
+            objDocAst.ast_id = _astid;
+            objDocAst.EnviaMail_Proc();
+
+            Procesa_SendMail();
+            ActStatus();
+
+
+
+            btnCancelar_Click(null, null);
+
+
         }
 
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
+            _GrabacionFinal = false;
 
             if (_botonNuevo)
             {
@@ -573,31 +679,46 @@ namespace CapaPresentacion.main
                 }
                 else
                 {
-                    lblError.Visible = true;
-                    lblError.Text = "El Departamento es requerido";
+                    return;
                 }
 
             }
             else
             {
                 ActualizarDocto();
+
             }
 
+                btnCancelar_Click(null, null);
         }
 
         protected bool validaCampos()
         {
+            this.lblErrContactoPlanta.Visible = false;
+            this.lblError.Visible = false;
+
+
             if (cmbDepto.Value == null)
             {
+                lblError.Visible = true;
+                lblError.Text = "El Departamento es requerido";
                 return false;
             }
             else
             {
+
+                if (this.txtContactoPlanta.Text == "")
+                {
+                    this.lblErrContactoPlanta.Visible = true;
+                    this.lblErrContactoPlanta.Text = "el email del contacto es requerido";
+                    return false;
+                }
+                               
                 return true;
 
             }
-
         }
+
 
         protected void InsertarDocto()
         {
@@ -619,7 +740,17 @@ namespace CapaPresentacion.main
             objDocAst.motivo_rechazo = null;
 
             objDocAst.user_id = Convert.ToInt32(Session["userid"]);
-            objDocAst.estatus = "Capturado";
+
+            if (_GrabacionFinal)
+            {
+                objDocAst.estatus = "En Proceso";
+            }
+            else
+            {
+                objDocAst.estatus = "Capturado";
+
+            }
+
             objDocAst.plan_respuesta = this.txtPlanRespuesta.Text;
 
             // lanzar el metodo insert
@@ -638,6 +769,7 @@ namespace CapaPresentacion.main
                 Id_ast = Convert.ToInt32(dr["ast_id"].ToString());
             }
 
+            _astid = Id_ast;
 
             // Campos secuencia de trabajo
 
@@ -882,9 +1014,6 @@ namespace CapaPresentacion.main
                 result = objPersonalInvolucrado.DocAstPersonalInvo_insert();
             }
 
-
-
-            btnCancelar_Click(null, null);
         }
 
         protected void ActualizarDocto()
@@ -906,6 +1035,13 @@ namespace CapaPresentacion.main
             objDocAst.epp_utilizar = this.txtEPP.Text;
             objDocAst.tipo_id = 1;
             objDocAst.motivo_rechazo = null;
+
+            if (_GrabacionFinal)
+            {
+                objDocAst.estatus = "En Proceso";
+            }
+           
+
 
             objDocAst.user_id = Convert.ToInt32(Session["userid"]);
             //objDocAst.estatus = "Capturado";
@@ -1161,7 +1297,7 @@ namespace CapaPresentacion.main
 
 
 
-            btnCancelar_Click(null, null);
+           
 
         }
 
@@ -1534,5 +1670,77 @@ namespace CapaPresentacion.main
         }
 
         #endregion (botones +1 Personal Involucrado)
+
+
+        protected void Procesa_SendMail()
+        {
+            clsDocAst objEnviaMail = new clsDocAst();
+
+            try
+            {
+                //objEnviaMail.SelectById();
+
+                MailMessage mM = new MailMessage(); //Mail Message
+                mM.SubjectEncoding = Encoding.UTF8;
+                mM.IsBodyHtml = true;
+
+
+                DataSet dsSendMail;
+
+                dsSendMail = objEnviaMail.SelMailto_AstEmm();
+
+                foreach (DataRow dRow in dsSendMail.Tables[0].Rows)
+                {
+                    if (dRow["MailFrom"].GetType().Name != "DBNull")
+                    {
+                        mM.From = new MailAddress(dRow["MailFrom"].ToString());
+                        mM.Subject = dRow["MailSubject"].ToString();
+                        mM.Body = dRow["MailBody1"].ToString();
+
+                        mM.To.Clear();
+                        mM.To.Add(dRow["MailTo"].ToString());
+
+                        mM.IsBodyHtml = true;
+
+                        //SmtpClient sC = new SmtpClient("smtp.live.com"); //SMTP client
+                        //sC.Port = 587; //port number for Hot mail
+
+                        //sC.Credentials = new NetworkCredential("aa_trading@live.com", "@123sham"); //credentials to login in to hotmail account
+                        //sC.EnableSsl = true; //enabled SSL
+                        //sC.Send(mM); //Send an email
+
+                        SmtpClient sC = new SmtpClient("smtp.gmail.com"); //SMTP client
+                        sC.Port = 25;  //587; //port number for Hot mail
+                        sC.Credentials = new NetworkCredential("noreplayastemm@gmail.com", "3108astemm"); //credentials to login in to hotmail account
+                        sC.EnableSsl = true;    // true    //enabled SSL
+                        sC.Send(mM); //Send an email
+
+                    }
+                }
+
+                
+
+            }//end of try block
+            catch (System.Exception ex)
+            {
+
+            }//end of ca
+        }
+
+       protected void ActStatus()
+        {
+
+            clsDocAst objEnviaMail = new clsDocAst();
+            try
+            {
+                objEnviaMail.UpdStatus();
+            }
+            catch (System.Exception ex)
+            {
+            }
+
+
+        }
+
     }
 }

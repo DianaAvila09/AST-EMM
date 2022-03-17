@@ -85,6 +85,7 @@
     <Content Include="login.aspx" />
     <Content Include="mainMenu.aspx" />
     <Content Include="main\capAst.aspx" />
+    <Content Include="main\autoriza.aspx" />
     <Content Include="main\gestionAst.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -120,6 +121,13 @@
     </Compile>
     <Compile Include="main\capAst.aspx.designer.cs">
       <DependentUpon>capAst.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="main\autoriza.aspx.cs">
+      <DependentUpon>autoriza.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="main\autoriza.aspx.designer.cs">
+      <DependentUpon>autoriza.aspx</DependentUpon>
     </Compile>
     <Compile Include="main\gestionAst.aspx.cs">
       <DependentUpon>gestionAst.aspx</DependentUpon>

@@ -50,6 +50,7 @@ namespace CapaPresentacion
                 Session["useremail"] = txtEmail.Text;
                 Session["username"] = objAcceso.nombre;
                 Session["userid"] = objAcceso.user_id;
+                Session["rol_nombre"] = objAcceso.rol_nombre;
 
                 Response.Redirect("mainMenu.aspx");
             }

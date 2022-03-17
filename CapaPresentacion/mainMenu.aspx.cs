@@ -32,6 +32,10 @@ namespace CapaPresentacion
         {
             Session.Remove("useremail");
             Session.Remove("username");
+            Session.Remove("userid");
+            Session.Remove("rol_nombre");
+
+
             Response.Redirect("login.aspx");
         }
     }

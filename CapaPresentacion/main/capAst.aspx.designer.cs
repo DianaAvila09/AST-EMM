@@ -49,6 +49,15 @@ namespace CapaPresentacion.main {
         protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
+        /// lblEstatus2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel lblEstatus2;
+        
+        /// <summary>
         /// cmbFecha control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace CapaPresentacion.main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtContactoPlanta;
+        
+        /// <summary>
+        /// lblErrContactoPlanta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrContactoPlanta;
         
         /// <summary>
         /// txtDescTrabajo control.
@@ -130,6 +148,15 @@ namespace CapaPresentacion.main {
         protected global::DevExpress.Web.ASPxTextBox txtAutorizaContacto;
         
         /// <summary>
+        /// lblContactoAutorizaRechaza control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContactoAutorizaRechaza;
+        
+        /// <summary>
         /// txtAutorizaPlanta control.
         /// </summary>
         /// <remarks>
@@ -137,6 +164,15 @@ namespace CapaPresentacion.main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtAutorizaPlanta;
+        
+        /// <summary>
+        /// lblMotivoRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMotivoRechazo;
         
         /// <summary>
         /// txtMotivorechazo control.
@@ -1048,13 +1084,13 @@ namespace CapaPresentacion.main {
         protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
-        /// Button29 control.
+        /// btnEliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button29;
+        protected global::System.Web.UI.WebControls.Button btnEliminar;
         
         /// <summary>
         /// hfIsNew control.

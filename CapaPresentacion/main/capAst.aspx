@@ -40,6 +40,12 @@
                  <%--<dx:ASPxTextBox ID="txtDepto" runat="server" Width="100%" Theme="Aqua" BackColor="#F8F8F8"  Height="25px" Font-Names="Segoe UI" Font-Size="Medium"></dx:ASPxTextBox>--%>
             </div>
 
+             <div class="col-2">
+
+                 <dx:ASPxLabel runat="server" ID="lblEstatus2"  text="" Font-Size="X-Large"></dx:ASPxLabel>
+        
+            </div>
+
         </div>
 
         <div class="row mt-2">
@@ -64,10 +70,11 @@
                 <dx:ASPxTextBox ID="txtHoraFin" runat="server" Width="80px" Theme="Aqua" BackColor="#F8F8F8"  Height="25px" Font-Names="Segoe UI" Font-Size="Medium"></dx:ASPxTextBox>
             </div>
             <div class="col-auto">
-                    <label>Corre del contacto en planta :</label>
+                    <label>Correo del contacto en planta :</label>
             </div>
             <div class="col">
                     <dx:ASPxTextBox ID="txtContactoPlanta" runat="server" Width="100%" Height="25px" Theme="Aqua" BackColor="#F8F8F8" Font-Names="Segoe UI" Font-Size="Medium"></dx:ASPxTextBox>
+                    <asp:Label runat="server" ID="lblErrContactoPlanta" CssClass="alert-danger" Visible="false" ></asp:Label>
             </div>
         </div>
 
@@ -106,7 +113,7 @@
                 </div>
                 <div class="col-4 text-center">
                     <dx:ASPxTextBox ID="txtAutorizaContacto" runat="server" Width="100%" CssClass="form-control" MaxLength="500" ReadOnly="true" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
-                    <label class="col-form-label">Autorizo Contacto de Planta: Nombre y Firma</label>
+                    <label runat="server" id="lblContactoAutorizaRechaza"  class="col-form-label">Contacto de Planta: Nombre y Firma</label>
                 </div>
                 <div class="col-4 text-center">
                     <dx:ASPxTextBox ID="txtAutorizaPlanta" runat="server" Width="100%" CssClass="form-control" MaxLength="500" ReadOnly="true" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
@@ -116,8 +123,8 @@
 
         <div class="row">
              <div class="col-12">
-                <label class="col-form-label">Motivo del rechazo :</label>
-                <dx:ASPxTextBox ID="txtMotivorechazo" runat="server" Enabled="false" Width="100%" CssClass="form-control" MaxLength="300" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
+                <label runat="server" id="lblMotivoRechazo" class="col-form-label">Motivo del rechazo :</label>
+                <dx:ASPxTextBox ID="txtMotivorechazo" runat="server" Readonly="true" Width="100%" CssClass="form-control" MaxLength="300" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
             </div>
         </div>
 
@@ -344,7 +351,7 @@
 
        <div class="row mt-3" >
            <div class="col" >
-                   <h5 class="form-text">Practicas Peligorsas</h5>
+                   <h5 class="form-text">Practicas Peligrosas</h5>
            </div>
        </div>
 
@@ -629,7 +636,7 @@
                 <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar"  ID="btnGrabar" OnClick="btnGrabar_Click"/>
            </div>
             <div class="col-auto" >
-                <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar y Enviar Notificacion"  Enabled="false" ID="btnGrabaFinal" OnClick="btnGrabaFinal_Click"/> 
+                <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar y Enviar Notificacion"  Enabled="true" ID="btnGrabaFinal" OnClick="btnGrabaFinal_Click"/> 
            </div>
             <div class="col-auto" >
                 <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Cancelar"  ID="btnCancelar" OnClick="btnCancelar_Click" /> 
@@ -639,7 +646,7 @@
                 
              </div>
              <div class="col-2 " >
-                <asp:Button runat="server" CssClass="btn btn-danger btn-block" Text="Eliminar documento"  ID="Button29" OnClick="btnEliminar_Click" /> 
+                <asp:Button runat="server" CssClass="btn btn-danger btn-block" Text="Eliminar documento"  ID="btnEliminar" OnClick="btnEliminar_Click" /> 
            </div>
        </div>
 

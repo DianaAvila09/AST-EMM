@@ -24,7 +24,7 @@ namespace CapaPresentacion.main
             {
                 if ((Session["useremail"] == null) || (Session["useremail"].ToString() == ""))
                 {
-                    Response.Redirect("login.aspx");
+                    Response.Redirect("../login.aspx");
                 }
 
                 cargaComboDoctos();

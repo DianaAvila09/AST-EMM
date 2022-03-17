@@ -27,6 +27,8 @@ namespace MegaDoc.BLL
         public int rol_id { get; set; }
         public int depto_id { get; set; }
 
+        public string rol_nombre { get; set; }
+
         //protected int _UsrId;
         //protected string _Mode;
         //protected int _CompanyId;
@@ -58,6 +60,7 @@ namespace MegaDoc.BLL
                 dr = dt.Rows[0];
                 user_id = Convert.ToInt32(dr["user_id"].ToString());
                 nombre = dr["nombre"].ToString();
+                rol_nombre = dr["rol_nombre"].ToString();
             }
         }
 

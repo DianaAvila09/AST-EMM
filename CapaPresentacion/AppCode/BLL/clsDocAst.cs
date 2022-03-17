@@ -32,6 +32,8 @@ namespace CapaPresentacion.AppCode.BLL
         public string estatus { get; set; }
         public string plan_respuesta { get; set; }
 
+        public bool isAutorizado { get; set; }
+
 
         #endregion //Variables
 
@@ -102,7 +104,7 @@ namespace CapaPresentacion.AppCode.BLL
 
         public int DocAstFormato_Upd()
         {
-            SqlParameter[] param = new SqlParameter[13];
+            SqlParameter[] param = new SqlParameter[14];
             param[0] = new SqlParameter("@p_area", area);
             param[1] = new SqlParameter("@p_hora_inicio", hora_inicio);
             param[2] = new SqlParameter("@p_hora_fin", hora_fin);
@@ -116,6 +118,7 @@ namespace CapaPresentacion.AppCode.BLL
             param[10] = new SqlParameter("@p_motivo_rechazo", motivo_rechazo);
             param[11] = new SqlParameter("@p_plan_respuesta", plan_respuesta);
             param[12] = new SqlParameter("@p_astid", ast_id);
+            param[13] = new SqlParameter("@p_estatus", estatus);
 
             return objDBBridge.ExecuteNonQuery("spUpdateAstFormato", param);
         }
@@ -125,6 +128,41 @@ namespace CapaPresentacion.AppCode.BLL
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@p_astid", ast_id);
             return objDBBridge.ExecuteNonQuery("spEliminaDetalleAst", param);
+        }
+
+        public int EnviaMail_Proc()
+        {
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@p_ast_id", ast_id);
+            return objDBBridge.ExecuteNonQuery("spMailAstEMM", param);
+        }
+
+        public int EstatusAst_Upd()
+        {
+            SqlParameter[] param = new SqlParameter[4];
+            param[0] = new SqlParameter("@p_astid", ast_id);
+            param[1] = new SqlParameter("@p_estatus", estatus);
+            param[2] = new SqlParameter("@p_autorizado", isAutorizado);
+            param[3] = new SqlParameter("@p_motivoRechazo", motivo_rechazo);
+
+            return objDBBridge.ExecuteNonQuery("spUpdateEstatusAST", param);
+        }
+
+
+
+        public int UpdStatus()
+        {
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Mode", "UpdStatus");
+            return objDBBridge.ExecuteNonQuery("spMailtoSendIns", param);
+        }
+        public DataSet SelMailto_AstEmm()
+        {
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Mode", "SelMailto_AstEmm");
+
+            return objDBBridge.ExecuteDataset("spMailtoSendIns", param);
+
         }
 
         #endregion
