@@ -34,6 +34,8 @@ namespace CapaPresentacion.AppCode.BLL
 
         public bool isAutorizado { get; set; }
 
+        public int vigilante_id { get; set; }
+
 
         #endregion //Variables
 
@@ -136,6 +138,13 @@ namespace CapaPresentacion.AppCode.BLL
             param[0] = new SqlParameter("@p_ast_id", ast_id);
             return objDBBridge.ExecuteNonQuery("spMailAstEMM", param);
         }
+        public int EnviaMailVigilancia_Proc()
+        {
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@p_ast_id", ast_id);
+            param[1] = new SqlParameter("@p_vigilante_id", vigilante_id);
+            return objDBBridge.ExecuteNonQuery("spMailAstEMM_vigilancia", param);
+        }
 
         public int EstatusAst_Upd()
         {
@@ -165,6 +174,19 @@ namespace CapaPresentacion.AppCode.BLL
 
         }
 
+        public DataSet Vigilantes_Sel()
+        { 
+            return objDBBridge.ExecuteDataset("spVigilantes_sel");
+        }
+
+        public int BitacoraVigilantes_insert()
+        {
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@p_ast_id", ast_id);
+            param[1] = new SqlParameter("@p_vigilante_id", vigilante_id);
+            
+            return objDBBridge.ExecuteNonQuery("spInsBitacoraVigilantes", param);
+        }
         #endregion
 
     }

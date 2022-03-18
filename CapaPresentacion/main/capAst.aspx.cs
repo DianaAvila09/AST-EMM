@@ -1705,7 +1705,7 @@ namespace CapaPresentacion.main
                         //SmtpClient sC = new SmtpClient("smtp.live.com"); //SMTP client
                         //sC.Port = 587; //port number for Hot mail
 
-                        //sC.Credentials = new NetworkCredential("aa_trading@live.com", "@123sham"); //credentials to login in to hotmail account
+                        //sC.Credentials = new NetworkCredential("aa_trading@live.com", "@123"); //credentials to login in to hotmail account
                         //sC.EnableSsl = true; //enabled SSL
                         //sC.Send(mM); //Send an email
 

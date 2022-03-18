@@ -52,8 +52,24 @@ namespace CapaPresentacion.main
                     objDocAst.isAutorizado = true;
 
                     objDocAst.EstatusAst_Upd();
-             
+
+
+                    // lanza la preparacion del email con html en tabla
+                   
+                    DataSet dsVigilantes;
+                    dsVigilantes = objDocAst.Vigilantes_Sel();
+
+                    foreach (DataRow dRow in dsVigilantes.Tables[0].Rows)
+                    {
+                        objDocAst.ast_id = _astid;
+                        objDocAst.vigilante_id = Convert.ToInt16(dRow["vigilancia_id"].ToString() );
+                        objDocAst.EnviaMailVigilancia_Proc();
+                    }
+
+
                     // enviar los email a vigilantes
+                    Procesa_SendMail();
+                    ActStatus();
 
                 }
                 else
@@ -135,6 +151,77 @@ namespace CapaPresentacion.main
                 //txtContactoPlanta.Text = dr["email_contactoPlanta"].ToString();
                 //txtPlanRespuesta.Text = dr["plan_respuesta"].ToString();
                 //txtElabora.Text = dr["elaboro"].ToString();
+            }
+
+
+        }
+
+
+        protected void Procesa_SendMail()
+        {
+            clsDocAst objEnviaMail = new clsDocAst();
+
+            try
+            {
+                //objEnviaMail.SelectById();
+
+                MailMessage mM = new MailMessage(); //Mail Message
+                mM.SubjectEncoding = Encoding.UTF8;
+                mM.IsBodyHtml = true;
+
+
+                DataSet dsSendMail;
+
+                dsSendMail = objEnviaMail.SelMailto_AstEmm();
+
+                foreach (DataRow dRow in dsSendMail.Tables[0].Rows)
+                {
+                    if (dRow["MailFrom"].GetType().Name != "DBNull")
+                    {
+                        mM.From = new MailAddress(dRow["MailFrom"].ToString());
+                        mM.Subject = dRow["MailSubject"].ToString();
+                        mM.Body = dRow["MailBody1"].ToString();
+
+                        mM.To.Clear();
+                        mM.To.Add(dRow["MailTo"].ToString());
+
+                        mM.IsBodyHtml = true;
+
+                        //SmtpClient sC = new SmtpClient("smtp.live.com"); //SMTP client
+                        //sC.Port = 587; //port number for Hot mail
+
+                        //sC.Credentials = new NetworkCredential("aa_trading@live.com", "@123"); //credentials to login in to hotmail account
+                        //sC.EnableSsl = true; //enabled SSL
+                        //sC.Send(mM); //Send an email
+
+                        SmtpClient sC = new SmtpClient("smtp.gmail.com"); //SMTP client
+                        sC.Port = 25;  //587; //port number for Hot mail
+                        sC.Credentials = new NetworkCredential("noreplayastemm@gmail.com", "3108astemm"); //credentials to login in to hotmail account
+                        sC.EnableSsl = true;    // true    //enabled SSL
+                        sC.Send(mM); //Send an email
+
+                    }
+                }
+
+
+
+            }//end of try block
+            catch (System.Exception ex)
+            {
+
+            }//end of ca
+        }
+
+        protected void ActStatus()
+        {
+
+            clsDocAst objEnviaMail = new clsDocAst();
+            try
+            {
+                objEnviaMail.UpdStatus();
+            }
+            catch (System.Exception ex)
+            {
             }
 
 

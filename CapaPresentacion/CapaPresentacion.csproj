@@ -84,6 +84,7 @@
     <Content Include="js\JavaScript.js" />
     <Content Include="login.aspx" />
     <Content Include="mainMenu.aspx" />
+    <Content Include="main\enterado.aspx" />
     <Content Include="main\capAst.aspx" />
     <Content Include="main\autoriza.aspx" />
     <Content Include="main\gestionAst.aspx" />
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="mainMenu.aspx.designer.cs">
       <DependentUpon>mainMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="main\enterado.aspx.cs">
+      <DependentUpon>enterado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="main\enterado.aspx.designer.cs">
+      <DependentUpon>enterado.aspx</DependentUpon>
     </Compile>
     <Compile Include="main\capAst.aspx.cs">
       <DependentUpon>capAst.aspx</DependentUpon>
