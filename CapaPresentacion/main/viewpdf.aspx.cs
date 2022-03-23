@@ -1,126 +1,50 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaPresentacion.AppCode.BLL;
-using System.Data;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+using DevExpress.XtraReports.UI;
+using CapaPresentacion.main;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-
+using iTextSharp.text.html.simpleparser;
+using System.IO;
 
 namespace CapaPresentacion.main
 {
-    public partial class gestionAst : System.Web.UI.Page
+    public partial class viewpdf : System.Web.UI.Page
     {
         clsDocAst objDocAst = new clsDocAst();
         clsAstSecuenciaTrab objSecuenciaTrab = new clsAstSecuenciaTrab();
         clsAstPracticasProh objPracticasProh = new clsAstPracticasProh();
         clsAstPersonalInvo objPersonalInvolucrado = new clsAstPersonalInvo();
-        object[] values;
+
+        Int32 _astid;
+        string _area;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ClientScript.GetPostBackEventReference(this, string.Empty);
-            if (Request.Form["__EVENTTARGET"] == "btnUpd_Click")
-            {
-                btnUpd_Click(this, new EventArgs());
-            }
-
-            if (!Page.IsPostBack)
-            {
-                if ((Session["useremail"] == null) || (Session["useremail"].ToString() == ""))
-                {
-                    Response.Redirect("../login.aspx");
-                }
-
-                cargaComboDoctos();
-
-                DateTime fecha = DateTime.Now;
-                Int64 valor = fecha.Ticks;
-
-                //637816594108884655
-            }
-          
+            //ReportViewer1.Report = CreateReport(1);
 
         }
 
-        protected void cargaComboDoctos()
-        {
-           
-            ASPxComboBox1.TextField = "desc_docto";
-            ASPxComboBox1.ValueField = "tipo_id";
-            ASPxComboBox1.DataSource = objDocAst.TipoDocto_Sel();
-            ASPxComboBox1.DataBind();
-
-            ASPxComboBox1.SelectedIndex = 0;
-
-            cargaGrid();
-        }
-        protected void cargaGrid()
-        {
-            objDocAst.tipo_id = int.Parse(ASPxComboBox1.Value.ToString());
-
-
-            this.ASPxGridView1.DataSource = objDocAst.DocAst_Sel();
-            this.ASPxGridView1.DataBind();
-
-        }
-    
-        protected void agregar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("capAst.aspx");
-        }
-
-        protected void ASPxComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cargaGrid();
-        }
-
-        protected void btnUpd_Click(object sender, EventArgs e)
-        {
-            Int32 intKey = Convert.ToInt32(HiddenField2["hidden_value"]);
-
-            Response.Redirect("capAst.aspx?astid=" + intKey );
-
-        }
-
-
-        protected void LinkBtnPdf_Click(object sender, EventArgs e)
-        {
-            LinkButton button = sender as LinkButton;
-            if (button == null) return;
-            int visibleIndex = int.Parse(button.CommandArgument);
-            values = ASPxGridView1.GetRowValues(visibleIndex, "ast_id", "") as object[];
-
-            int astId = int.Parse(values[0].ToString());
-            pdfView(astId);
-
-            //objClsAP.LogPOId = int.Parse(values[0].ToString());
-            //objClsAP.TrackLog_Del();
-
-            //LlenaGrid1();
-        }
-
-        protected void pdfView(int asi_id)
+        protected void brnViewPdf_Click(object sender, EventArgs e)
         {
             string strNombreFile = "";
             string cadenaFinal = "";
             string strPlanRespuesta = "";
 
             DataTable dt = new DataTable();
-            Document document = new Document(PageSize.A4, 10, 10, 10, 10);
+            Document document = new Document(PageSize.A4,10, 10,10,10);
 
             PdfWriter writer = PdfWriter.GetInstance(document, HttpContext.Current.Response.OutputStream);
-            dt = dtFormatoAST(asi_id);
-
-            // string url = "http://localhost:44376/Image/logoMagna.png";
-
-            //string url = "https://zncwaestportal.azurewebsites.net/image/logoMagna.png";
-            //iTextSharp.text.Image logoPng = iTextSharp.text.Image.GetInstance(new Uri(url));
-            //logoPng.ScalePercent(24f);
-            //logoPng.Alignment = iTextSharp.text.Image.ALIGN_CENTER;
+            dt = dtFormatoAST(1);
 
             if (dt.Rows.Count > 0)
             {
@@ -128,20 +52,19 @@ namespace CapaPresentacion.main
                 Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 15);
                 Font fontValue = FontFactory.GetFont(FontFactory.TIMES, 12);
 
-                //document.Add(logoPng);
 
-                document.Add(new Paragraph("      Analisis de Seguridad En El Trabjo. AST,  EMM.", fontTitle));
+                document.Add(new Paragraph( "      Analisis de Seguridad En El Trabjo. AST,  EMM.", fontTitle  ));
                 document.Add(new Chunk("\n"));
 
-                cadenaFinal = "";
+                 cadenaFinal = "";
 
                 foreach (DataRow dr in dt.Rows)
                 {
                     cadenaFinal = "Area: " + dr["area"].ToString();
                     cadenaFinal += "                         Departamento: " + dr["dpto_nombre"].ToString();
-                    document.Add(new Paragraph(cadenaFinal, fontValue));
+                    document.Add(new Paragraph( cadenaFinal, fontValue) );
 
-                    cadenaFinal = "Fecha: " + String.Format("{0:dd/MMM/yyyy}", Convert.ToDateTime(dr["fecha_creacion"].ToString()));
+                    cadenaFinal = "Fecha: " + dr["fecha_creacion"].ToString();
                     cadenaFinal += "     Hora inicio: " + dr["hora_inicio"].ToString();
                     cadenaFinal += "     Hora fin: " + dr["hora_fin"].ToString();
                     document.Add(new Paragraph(cadenaFinal, fontValue));
@@ -153,11 +76,11 @@ namespace CapaPresentacion.main
 
                     cadenaFinal = "DESCRIPCION DEL TRABAJO";
                     document.Add(new Paragraph(cadenaFinal, fontValue));
-                    cadenaFinal = dr["desc_trabajo_realizar"].ToString();
+                    cadenaFinal =  dr["desc_trabajo_realizar"].ToString();
                     document.Add(new Paragraph(cadenaFinal, fontValue));
                     document.Add(new Chunk("\n"));
 
-                    cadenaFinal = "PUESTOS INVOLUCRADOS";
+                    cadenaFinal = "PUESTOS INVOLUCRADOS" ;
                     document.Add(new Paragraph(cadenaFinal, fontValue));
                     cadenaFinal = dr["puestos_involucrados"].ToString();
                     document.Add(new Paragraph(cadenaFinal, fontValue));
@@ -173,7 +96,7 @@ namespace CapaPresentacion.main
                     cadenaFinal += "                              " + dr["email_contactoPlanta"].ToString();
                     document.Add(new Paragraph(cadenaFinal, fontValue));
 
-                    cadenaFinal = "                  ELABORO";
+                    cadenaFinal =  "                  ELABORO";
                     cadenaFinal += "                              CONTACTO DE PLANTA";
                     cadenaFinal += "                                   SEGURIDAD PLANTA";
                     document.Add(new Paragraph(cadenaFinal, fontValue));
@@ -188,12 +111,12 @@ namespace CapaPresentacion.main
                     strPlanRespuesta = dr["plan_respuesta"].ToString();
                 }
 
-
+               
             }
 
-            #region secuencia trabajo
+#region secuencia trabajo
             Font _font9 = FontFactory.GetFont(FontFactory.TIMES, 11);
-            dt = dtSecuenciaTrab(asi_id);
+            dt = dtSecuenciaTrab(1);
 
             PdfPTable table = new PdfPTable(dt.Columns.Count);
 
@@ -239,9 +162,9 @@ namespace CapaPresentacion.main
             #endregion secuencia trabajo
 
 
-            #region practicas prohibidas
+#region practicas prohibidas
 
-            dt = dtPracticasProhibidas(asi_id);
+            dt = dtPracticasProhibidas(1);
 
             document.Add(new Chunk("\n"));
             cadenaFinal = "PRACTICAS PROHIBIDAS";
@@ -250,7 +173,7 @@ namespace CapaPresentacion.main
 
             table = new PdfPTable(dt.Columns.Count);
 
-            widths = new float[dt.Columns.Count];
+             widths = new float[dt.Columns.Count];
             for (int i = 0; i < dt.Columns.Count; i++)
                 if (i != 0 && i != 3)
                 {
@@ -269,7 +192,7 @@ namespace CapaPresentacion.main
             table.SetWidths(widths);
             table.WidthPercentage = 95;
 
-            cell = new PdfPCell(new Phrase("columns"));
+             cell = new PdfPCell(new Phrase("columns"));
             cell.Colspan = dt.Columns.Count;
 
             //document.Add(new Chunk("\n"));
@@ -303,16 +226,16 @@ namespace CapaPresentacion.main
             tableNota.AddCell(miCelda);
 
             document.Add(tableNota);
-            document.Add(new Chunk(""));
+            document.Add(new Chunk("\n"));
 
 
-            #region Personal involucrados
+    #region Personal involucrados
 
-            dt = dtPersonalInvolucrado(asi_id);
+            dt = dtPersonalInvolucrado(1);
 
+            document.Add(new Chunk("\n"));
             cadenaFinal = "PERSONAL INVOLUCRADO";
             document.Add(new Paragraph(cadenaFinal, _font9));
-            document.Add(new Chunk(""));
 
             table = new PdfPTable(dt.Columns.Count);
 
@@ -364,7 +287,6 @@ namespace CapaPresentacion.main
 
             cadenaFinal = "PLAN DE RESPUESTA";
             document.Add(new Paragraph(cadenaFinal, _font9));
-            document.Add(new Chunk(""));
 
             cadenaFinal = strPlanRespuesta;
             PdfPTable tablePlan = new PdfPTable(1);
@@ -374,28 +296,28 @@ namespace CapaPresentacion.main
             tablePlan.AddCell(miCeldaPlan);
 
             document.Add(tablePlan);
-            document.Add(new Chunk(""));
+            document.Add(new Chunk("\n"));
 
 
 
             document.Close();
 
             Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment;filename=" + strNombreFile);
+            Response.AddHeader("content-disposition", "attachment;filename=" + strNombreFile );
             HttpContext.Current.Response.Write(document);
             Response.Flush();
             Response.End();
 
-        }
+    }
 
         public DataTable dtFormatoAST(int astId)
         {
             DataTable dt = new DataTable();
 
             objDocAst.ast_id = astId;
-            dt = objDocAst.DocAstFormato_Sel().Tables[0];
+            dt=  objDocAst.DocAstFormato_Sel().Tables[0];
 
-            return dt;
+           return dt;
 
         }
 
@@ -409,6 +331,7 @@ namespace CapaPresentacion.main
             return dt;
 
         }
+
         public DataTable dtPracticasProhibidas(int astId)
         {
             DataTable dt = new DataTable();

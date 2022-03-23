@@ -11,6 +11,8 @@ namespace CapaPresentacion
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            DevExpress.XtraReports.Web.ASPxReportDesigner.StaticInitialize();
+
         }
     }
 }

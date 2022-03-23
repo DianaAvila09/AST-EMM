@@ -79,6 +79,13 @@
                                 </dx:GridViewDataTextColumn>
                                 <dx:GridViewDataTextColumn Caption="Area" FieldName="area" VisibleIndex="4" Width="250px">
                                 </dx:GridViewDataTextColumn>
+                                <dx:GridViewDataTextColumn VisibleIndex="7" Width="100px">
+                                    <DataItemTemplate>
+                                        <asp:LinkButton ID="LinkBtnPdf" runat="server" CommandArgument="<%# Container.VisibleIndex %>" Font-Underline="True" OnClick="LinkBtnPdf_Click">Visita PDF</asp:LinkButton>
+                                    </DataItemTemplate>
+                                </dx:GridViewDataTextColumn>
+                                <dx:GridViewDataTextColumn FieldName="ast_id" Visible="False" VisibleIndex="8">
+                                </dx:GridViewDataTextColumn>
                             </Columns>
                             </dx:ASPxGridView>
                     </div>

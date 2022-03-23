@@ -732,7 +732,7 @@ namespace CapaPresentacion.main
             objDocAst.hora_inicio = this.txtHoraIni.Text;
             objDocAst.hora_fin = this.txtHoraFin.Text;
             objDocAst.email_contactoPlanta = this.txtContactoPlanta.Text;
-            objDocAst.nombre_docto = "AST_" + valor + ".doc";
+            objDocAst.nombre_docto = "AST_" + valor + ".pdf";
             objDocAst.desc_trabajo_realizar = this.txtDescTrabajo.Text;
             objDocAst.puestos_involucrados = this.txtPuestoInvolucrado.Text;
             objDocAst.epp_utilizar = this.txtEPP.Text;
