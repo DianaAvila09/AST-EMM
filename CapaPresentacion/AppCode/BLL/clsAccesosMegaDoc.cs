@@ -28,6 +28,9 @@ namespace MegaDoc.BLL
         public int depto_id { get; set; }
 
         public string rol_nombre { get; set; }
+        public string cia { get; set; }
+        public string dpto_nombre { get; set; }
+        public string mode { get; set; }
 
         //protected int _UsrId;
         //protected string _Mode;
@@ -64,8 +67,39 @@ namespace MegaDoc.BLL
             }
         }
 
+        public DataSet UsuariosQuery()
+        {
+            return objDBBridge.ExecuteDataset("spUsuariosQuery");
+        }
 
-       
+        public int User_Actualiza()
+        {
+            SqlParameter[] param = new SqlParameter[9];
+            param[0] = new SqlParameter("@mode", mode);
+            param[1] = new SqlParameter("@user_id", user_id);
+            param[2] = new SqlParameter("@nombre", nombre);
+            param[3] = new SqlParameter("@email", email);
+            param[4] = new SqlParameter("@password", password);
+            param[5] = new SqlParameter("@esActivo", esActivo);
+            param[6] = new SqlParameter("@rol_id", rol_id);
+            param[7] = new SqlParameter("@dpto_id", depto_id);
+            param[8] = new SqlParameter("@cia", cia);
+           
+            return objDBBridge.ExecuteNonQuery("spUsuariosUpd", param);
+        }
+
+        public DataSet UsuariosQuery_ById()
+        {
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@user_id", user_id);
+
+            return objDBBridge.ExecuteDataset("spUsuariosQuery_ById", param);
+        }
+
+        public DataSet RolesQuery()
+        {
+            return objDBBridge.ExecuteDataset("spRolesQuery");
+        }
 
         #endregion //Metodos
     }

@@ -18,7 +18,7 @@ using System.IO;
 
 namespace CapaPresentacion.main
 {
-    public partial class viewpdf : System.Web.UI.Page
+    public partial class viewPdf : System.Web.UI.Page
     {
         clsDocAst objDocAst = new clsDocAst();
         clsAstSecuenciaTrab objSecuenciaTrab = new clsAstSecuenciaTrab();
@@ -350,6 +350,21 @@ namespace CapaPresentacion.main
             dt = objPersonalInvolucrado.DocAstPersonalInvo_Sel().Tables[0];
             return dt;
 
+        }
+
+        protected void btnPdf_Click(object sender, EventArgs e)
+        {
+            CrearReport();
+        }
+
+        XtraReport CrearReport()
+        {
+            docAstPdf rpt = new docAstPdf(1);
+
+            visorPdf.OpenReport(rpt);
+
+            return rpt;
+            
         }
     }
 }

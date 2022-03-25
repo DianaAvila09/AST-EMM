@@ -1035,6 +1035,7 @@ namespace CapaPresentacion.main
             objDocAst.epp_utilizar = this.txtEPP.Text;
             objDocAst.tipo_id = 1;
             objDocAst.motivo_rechazo = null;
+            objDocAst.estatus = "Capturado";
 
             if (_GrabacionFinal)
             {

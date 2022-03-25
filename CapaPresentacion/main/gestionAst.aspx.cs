@@ -18,6 +18,9 @@ namespace CapaPresentacion.main
         clsAstSecuenciaTrab objSecuenciaTrab = new clsAstSecuenciaTrab();
         clsAstPracticasProh objPracticasProh = new clsAstPracticasProh();
         clsAstPersonalInvo objPersonalInvolucrado = new clsAstPersonalInvo();
+        clsAstGpoAprobacion objGpoAprob = new clsAstGpoAprobacion();
+
+
         object[] values;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -108,6 +111,9 @@ namespace CapaPresentacion.main
             string strNombreFile = "";
             string cadenaFinal = "";
             string strPlanRespuesta = "";
+            string NombreVigilante = "";
+
+            NombreVigilante = this.dtGpoAprobacion(asi_id);
 
             DataTable dt = new DataTable();
             Document document = new Document(PageSize.A4, 10, 10, 10, 10);
@@ -117,10 +123,10 @@ namespace CapaPresentacion.main
 
             // string url = "http://localhost:44376/Image/logoMagna.png";
 
-            //string url = "https://zncwaestportal.azurewebsites.net/image/logoMagna.png";
-            //iTextSharp.text.Image logoPng = iTextSharp.text.Image.GetInstance(new Uri(url));
-            //logoPng.ScalePercent(24f);
-            //logoPng.Alignment = iTextSharp.text.Image.ALIGN_CENTER;
+            string url = "https://zncwaestportal.azurewebsites.net/image/logoMagna.png";
+            iTextSharp.text.Image logoPng = iTextSharp.text.Image.GetInstance(new Uri(url));
+            logoPng.ScalePercent(24f);
+            logoPng.Alignment = iTextSharp.text.Image.ALIGN_CENTER;
 
             if (dt.Rows.Count > 0)
             {
@@ -128,7 +134,7 @@ namespace CapaPresentacion.main
                 Font fontTitle = FontFactory.GetFont(FontFactory.COURIER_BOLD, 15);
                 Font fontValue = FontFactory.GetFont(FontFactory.TIMES, 12);
 
-                //document.Add(logoPng);
+                document.Add(logoPng);
 
                 document.Add(new Paragraph("      Analisis de Seguridad En El Trabjo. AST,  EMM.", fontTitle));
                 document.Add(new Chunk("\n"));
@@ -171,6 +177,7 @@ namespace CapaPresentacion.main
 
                     cadenaFinal = "           " + dr["elaboro"].ToString();
                     cadenaFinal += "                              " + dr["email_contactoPlanta"].ToString();
+                    cadenaFinal += "                          " + NombreVigilante;
                     document.Add(new Paragraph(cadenaFinal, fontValue));
 
                     cadenaFinal = "                  ELABORO";
@@ -426,6 +433,23 @@ namespace CapaPresentacion.main
             objPersonalInvolucrado.ast_id = astId;
             dt = objPersonalInvolucrado.DocAstPersonalInvo_Sel().Tables[0];
             return dt;
+
+        }
+        public string dtGpoAprobacion(int astId)
+        {
+            string NombVigilante = "";
+            DataTable dt = new DataTable();
+
+            objGpoAprob.ast_id = astId;
+            dt = objGpoAprob.DocAstGpoAprobacion_Sel().Tables[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                NombVigilante = dr[0].ToString();
+            }
+
+
+           return NombVigilante;
 
         }
     }

@@ -36,13 +36,13 @@
                                             <Groups>
                                                 <dx:NavBarGroup Text="Principal" Target="contentUrlPane">
                                                     <Items>
-                                                        <dx:NavBarItem Text="Gestion de documentos" NavigateUrl="~/main/gestionAst.aspx">
+                                                        <dx:NavBarItem Text="Gestion de documentos" NavigateUrl="~/main/gestionAst.aspx" Selected="True">
                                                         </dx:NavBarItem>
                                                     </Items>
                                                 </dx:NavBarGroup>
                                                 <dx:NavBarGroup Text="Seguridad" Expanded="False">
                                                     <Items>
-                                                        <dx:NavBarItem Text="Usuarios">
+                                                        <dx:NavBarItem Text="Usuarios" NavigateUrl="~/auth/userQuery.aspx">
                                                         </dx:NavBarItem>
                                                     </Items>
                                                 </dx:NavBarGroup>

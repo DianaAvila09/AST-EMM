@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="spConsultaAstFormato_byIdTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="xrLabel36.Text" xml:space="preserve">
+    <value>Tengo Conocimiento del presente AST (ANALISIS DE SEGURIDAD EN EL TRABAJO), el cual he leido y comprendido de los riesgos y peligros que implica REALIZAR la tarea, asi como los las medidas de Seguridad implementadas para eliminar y controlar los riesgos y peligros, el cual me obligo y comprometo a seguir y respetar para prevenir los accidentes de trabjo.</value>
+  </data>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="dataSet11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
-  </metadata>
-  <metadata name="spConsultaAstSecuenciaTrab_byIdTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
-  </metadata>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9InNwQ29uc3VsdGFBc3RGb3JtYXRvX2J5SWQiPjxGaWVsZCBOYW1lPSJhc3RfaWQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJlbWFpbF9jb250YWN0b1BsYW50YSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJub21icmVfZG9jdG8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iZmVjaGFfY3JlYWNpb24iIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJob3JhX2ZpbiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJob3JhX2luaWNpbyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJkZXNjX3RyYWJham9fcmVhbGl6YXIiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0icHVlc3Rvc19pbnZvbHVjcmFkb3MiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iZXBwX3V0aWxpemFyIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InRpcG9faWQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJ1c2VyX2lkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0ibW90aXZvX3JlY2hhem8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iZXN0YXR1cyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJkcHRvX2lkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iYXJlYSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJwbGFuX3Jlc3B1ZXN0YSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJlbGFib3JvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InJvbF9ub21icmUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iZHB0b19ub21icmUiIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PFZpZXcgTmFtZT0ic3BDb25zdWx0YUFzdFNlY3VlbmNpYVRyYWJfYnlJZCI+PEZpZWxkIE5hbWU9InNlY19pZCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9InBhc29fbnVtIiBUeXBlPSJJbnQxNiIgLz48RmllbGQgTmFtZT0iZGVzY19zZWN1ZW5jaWEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iaWRlbnRpZmljYV9yaWVzZ29zIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InByb2NlZG1pZW50b19yZWFsaXphciIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJhc3RfaWQiIFR5cGU9IkludDMyIiAvPjwvVmlldz48VmlldyBOYW1lPSJzcENvbnN1bHRhQXN0R3BvQXByb2JhY2lvbl9ieUlkIj48RmllbGQgTmFtZT0ibm9tYnJlIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjxWaWV3IE5hbWU9InNwQ29uc3VsdGFBc3RQZXJzb25hbEludm9fYnlJZCI+PEZpZWxkIE5hbWU9InBlcnNvbmFsX2lkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0ibm9tYnJlIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImVtYWlsIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImFzdF9pZCIgVHlwZT0iSW50MzIiIC8+PC9WaWV3PjxWaWV3IE5hbWU9InNwQ29uc3VsdGFBc3RQcmFjdGljYXNQcm9oX2J5SWQiPjxGaWVsZCBOYW1lPSJwcmFjdGljYV9pZCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9InByYWN0aWNhX251bSIgVHlwZT0iSW50MTYiIC8+PEZpZWxkIE5hbWU9ImRlc2NfcHJhY3RpY2EiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iYXN0X2lkIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
+  </data>
 </root>

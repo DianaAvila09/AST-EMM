@@ -94,6 +94,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="auth\userQuery.aspx" />
+    <Content Include="auth\userReg.aspx" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\StyleSheet.css" />
     <Content Include="Global.asax" />
@@ -105,7 +107,6 @@
     <Content Include="js\JavaScript.js" />
     <Content Include="login.aspx" />
     <Content Include="mainMenu.aspx" />
-    <Content Include="main\viewpdf.aspx" />
     <Content Include="main\enterado.aspx" />
     <Content Include="main\capAst.aspx" />
     <Content Include="main\autoriza.aspx" />
@@ -121,6 +122,20 @@
     <Compile Include="AppCode\BLL\clsDocAst.cs" />
     <Compile Include="AppCode\DAL\DBBridge.cs" />
     <Compile Include="AppCode\DAL\SQLHelper.cs" />
+    <Compile Include="auth\userQuery.aspx.cs">
+      <DependentUpon>userQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="auth\userQuery.aspx.designer.cs">
+      <DependentUpon>userQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="auth\userReg.aspx.cs">
+      <DependentUpon>userReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="auth\userReg.aspx.designer.cs">
+      <DependentUpon>userReg.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,18 +152,6 @@
     </Compile>
     <Compile Include="mainMenu.aspx.designer.cs">
       <DependentUpon>mainMenu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="main\viewpdf.aspx.cs">
-      <DependentUpon>viewpdf.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="main\viewpdf.aspx.designer.cs">
-      <DependentUpon>viewpdf.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="main\DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="main\enterado.aspx.cs">
       <DependentUpon>enterado.aspx</DependentUpon>
@@ -178,22 +181,8 @@
     <Compile Include="main\gestionAst.aspx.designer.cs">
       <DependentUpon>gestionAst.aspx</DependentUpon>
     </Compile>
-    <Compile Include="main\XtraReport2.cs">
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="main\DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Content>
-    <None Include="main\DataSet1.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="main\DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -219,9 +208,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="main\XtraReport2.resx">
-      <DependentUpon>XtraReport2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
