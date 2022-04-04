@@ -44,6 +44,8 @@
                                                     <Items>
                                                         <dx:NavBarItem Text="Usuarios" NavigateUrl="~/auth/userQuery.aspx">
                                                         </dx:NavBarItem>
+                                                        <dx:NavBarItem NavigateUrl="~/catalogos/doctosQuery.aspx" Text="Tipo de documento">
+                                                        </dx:NavBarItem>
                                                     </Items>
                                                 </dx:NavBarGroup>
                                             </Groups>

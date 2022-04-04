@@ -44,7 +44,7 @@ namespace CapaPresentacion.AppCode.BLL
         public DataSet DocAst_Sel()
         {
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@prmTipoDocto", 1);
+            param[0] = new SqlParameter("@prmTipoDocto", tipo_id);
 
             return objDBBridge.ExecuteDataset("spConsultaAst", param);
         }

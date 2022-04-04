@@ -73,7 +73,12 @@ namespace CapaPresentacion.main
     
         protected void agregar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("capAst.aspx");
+           int valor =  Convert.ToInt16(ASPxComboBox1.SelectedItem.Value);
+
+            if (valor == 1)
+            {
+                Response.Redirect("capAst.aspx");
+            }
         }
 
         protected void ASPxComboBox1_SelectedIndexChanged(object sender, EventArgs e)

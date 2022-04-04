@@ -96,6 +96,8 @@
   <ItemGroup>
     <Content Include="auth\userQuery.aspx" />
     <Content Include="auth\userReg.aspx" />
+    <Content Include="catalogos\doctosQuery.aspx" />
+    <Content Include="catalogos\doctosReg.aspx" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\StyleSheet.css" />
     <Content Include="Global.asax" />
@@ -119,6 +121,7 @@
     <Compile Include="AppCode\BLL\clsAstPracticasProh.cs" />
     <Compile Include="AppCode\BLL\clsAstPersonalInvo.cs" />
     <Compile Include="AppCode\BLL\clsAstGpoAprobacion.cs" />
+    <Compile Include="AppCode\BLL\clsCatalogos.cs" />
     <Compile Include="AppCode\BLL\clsDocAst.cs" />
     <Compile Include="AppCode\DAL\DBBridge.cs" />
     <Compile Include="AppCode\DAL\SQLHelper.cs" />
@@ -135,6 +138,20 @@
     </Compile>
     <Compile Include="auth\userReg.aspx.designer.cs">
       <DependentUpon>userReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\doctosQuery.aspx.cs">
+      <DependentUpon>doctosQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="catalogos\doctosQuery.aspx.designer.cs">
+      <DependentUpon>doctosQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\doctosReg.aspx.cs">
+      <DependentUpon>doctosReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="catalogos\doctosReg.aspx.designer.cs">
+      <DependentUpon>doctosReg.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
