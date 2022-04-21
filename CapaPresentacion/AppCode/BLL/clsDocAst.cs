@@ -35,6 +35,11 @@ namespace CapaPresentacion.AppCode.BLL
         public bool isAutorizado { get; set; }
 
         public int vigilante_id { get; set; }
+        public string rol_name { get; set; }
+
+        public bool trabajo_enAlturas { get; set; }
+        public bool trabajo_equipoMovil { get; set; }
+        public bool trabajo_espacioConfinado { get; set; }
 
 
         #endregion //Variables
@@ -43,8 +48,10 @@ namespace CapaPresentacion.AppCode.BLL
         #region Metodos
         public DataSet DocAst_Sel()
         {
-            SqlParameter[] param = new SqlParameter[1];
+            SqlParameter[] param = new SqlParameter[3];
             param[0] = new SqlParameter("@prmTipoDocto", tipo_id);
+            param[1] = new SqlParameter("@p_UserId", user_id);
+            param[2] = new SqlParameter("@p_RolName", rol_name);
 
             return objDBBridge.ExecuteDataset("spConsultaAst", param);
         }
@@ -61,7 +68,7 @@ namespace CapaPresentacion.AppCode.BLL
 
         public int Doctos_insert()
         {
-            SqlParameter[] param = new SqlParameter[15];
+            SqlParameter[] param = new SqlParameter[18];
             param[0] = new SqlParameter("@p_area", area);
             param[1] = new SqlParameter("@p_fecha", fecha_creacion);
             param[2] = new SqlParameter("@p_hora_inicio", hora_inicio);
@@ -77,6 +84,9 @@ namespace CapaPresentacion.AppCode.BLL
             param[12] = new SqlParameter("@p_motivo_rechazo", motivo_rechazo);
             param[13] = new SqlParameter("@p_estatus", estatus);
             param[14] = new SqlParameter("@p_plan_respuesta", plan_respuesta);
+            param[15] = new SqlParameter("@p_trabajo_enAlturas", trabajo_enAlturas);
+            param[16] = new SqlParameter("@p_trabajo_equipoMovil", trabajo_equipoMovil);
+            param[17] = new SqlParameter("@p_trabajo_espacioConfinado", trabajo_espacioConfinado);
 
             return objDBBridge.ExecuteNonQuery("spInsertAstFormato", param);
         }
@@ -106,7 +116,7 @@ namespace CapaPresentacion.AppCode.BLL
 
         public int DocAstFormato_Upd()
         {
-            SqlParameter[] param = new SqlParameter[14];
+            SqlParameter[] param = new SqlParameter[17];
             param[0] = new SqlParameter("@p_area", area);
             param[1] = new SqlParameter("@p_hora_inicio", hora_inicio);
             param[2] = new SqlParameter("@p_hora_fin", hora_fin);
@@ -121,6 +131,9 @@ namespace CapaPresentacion.AppCode.BLL
             param[11] = new SqlParameter("@p_plan_respuesta", plan_respuesta);
             param[12] = new SqlParameter("@p_astid", ast_id);
             param[13] = new SqlParameter("@p_estatus", estatus);
+            param[14] = new SqlParameter("@p_trabajo_enAlturas", trabajo_enAlturas);
+            param[15] = new SqlParameter("@p_trabajo_equipoMovil", trabajo_equipoMovil);
+            param[16] = new SqlParameter("@p_trabajo_espacioConfinado", trabajo_espacioConfinado);
 
             return objDBBridge.ExecuteNonQuery("spUpdateAstFormato", param);
         }

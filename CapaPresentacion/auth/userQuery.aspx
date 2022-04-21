@@ -21,7 +21,7 @@
        
                 <div class="row">
                     <div class="col">
-                        <h3> Consulta de Usuarios</h3>
+                        <h3>Usuarios</h3>
                         <hr />
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="row mt-2">
                    
                     <div class="col-auto">
-                         <asp:Button CssClass="btn btn-primary btn-sm" runat="server" Text="Agregar nuevo usuario" OnClick="agregar_Click" ></asp:Button>
+                         <asp:Button CssClass="btn btn-primary btn-sm" runat="server" Text="Agregar usuario" OnClick="agregar_Click" ></asp:Button>
                     </div>
                      <div class="col-auto">
                          <asp:Button CssClass="btn btn-primary btn-sm" runat="server" Text="Exportar excel" Visible="false" ></asp:Button>

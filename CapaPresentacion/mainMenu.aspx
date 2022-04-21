@@ -46,6 +46,12 @@
                                                         </dx:NavBarItem>
                                                         <dx:NavBarItem NavigateUrl="~/catalogos/doctosQuery.aspx" Text="Tipo de documento">
                                                         </dx:NavBarItem>
+                                                        <dx:NavBarItem NavigateUrl="~/catalogos/deptosQuery.aspx" Text="Departamentos">
+                                                        </dx:NavBarItem>
+                                                        <dx:NavBarItem NavigateUrl="~/catalogos/vigilantesQuery.aspx" Text="Grupo de vigilantes">
+                                                        </dx:NavBarItem>
+                                                        <dx:NavBarItem NavigateUrl="~/catalogos/comite.aspx" Text="Comite de firmas">
+                                                        </dx:NavBarItem>
                                                     </Items>
                                                 </dx:NavBarGroup>
                                             </Groups>

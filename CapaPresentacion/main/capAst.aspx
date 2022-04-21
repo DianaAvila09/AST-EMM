@@ -514,27 +514,79 @@
                       <div class="card-body" style="background-color:ghostwhite">
                          Tengo Conocimiento del presente AST (ANALISIS DE SEGURIDAD EN EL TRABAJO), el cual he leido y comprendido de los riesgos y peligros que implica REALIZAR la tarea, asi como los las medidas de Seguridad implementadas para eliminar y controlar los riesgos y peligros, el cual me obligo y comprometo a seguir y respetar para prevenir los accidentes de trabjo.
                       </div>
-
                   </div>
             </div>
         </div>
 
+        <br />
+
+        <div class="row">
+            <div class="col-auto">
+                <dx:ASPxCheckBox ID="chck1" runat="server"   Text="Trabajo en alturas" Font-Size="Large" CheckState="Unchecked"></dx:ASPxCheckBox>
+            </div>
+
+             <div class="col-auto">
+                <dx:ASPxCheckBox  ID="chck2" runat="server" Text="Trabajo con equipo movil" Font-Size="Large"></dx:ASPxCheckBox>
+            </div>
+
+             <div class="col-auto">
+                <dx:ASPxCheckBox  ID="chck3" runat="server" Text="Trabajo en espacios confinados" Font-Size="Large"></dx:ASPxCheckBox>
+            </div>
+        </div>
+
             <div class="row mt-5">
-                 <div class="col-3 text-center">
+                 <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre1" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
-                    <label class="col-form-label">Elaboro: Nombre y firma</label>                 
+                    <label class="col-form-label">Elaboro: Nombre y firma</label>   
                 </div>
-                <div class="col-3 text-center">
+                <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList1" ClientInstanceName="radioButtonList1" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
+
+                <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre2" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>
                 </div>
-                <div class="col-3 text-center">
+                <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList2" ClientInstanceName="radioButtonList2" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
+                <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre3" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>
                 </div>
+                <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList3" ClientInstanceName="radioButtonList3" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
                  <div class="col">
                     <div class="row align-items-center">
-                        <div class="col-1">
+                        <div class="col">
                            <asp:Button ID="btnPI0" CssClass="btn btn-primary btn-sm" Text="+" runat="server"  OnCLick="btnPI0_Click" />
                       </div>
                       
@@ -543,18 +595,53 @@
             </div>
 
         <asp:Panel ID="Panel14" runat="server" Visible="true">
-           <div class="row mt-1">
-                 <div class="col-3 text-center">
+           <div class="row mt-3">
+                 <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre4" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>                 
                 </div>
-                <div class="col-3 text-center">
+               <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList4" ClientInstanceName="radioButtonList4" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
+                <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre5" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>
                 </div>
-                <div class="col-3 text-center">
+               <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList5" ClientInstanceName="radioButtonList5" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
+                <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre6" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>
+                </div>
+               <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList6" ClientInstanceName="radioButtonList6" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
                 </div>
                  <div class="col">
                     <div class="row align-items-center">
@@ -572,18 +659,54 @@
 
          <asp:Panel ID="Panel15" runat="server" Visible="true">
            <div class="row mt-1">
-                 <div class="col-3 text-center">
+                 <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre7" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>                 
                 </div>
-                <div class="col-3 text-center">
+               <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList7" ClientInstanceName="radioButtonList7" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
+                <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre8" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>
                 </div>
-                <div class="col-3 text-center">
+               <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList8" ClientInstanceName="radioButtonList8" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
+                <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre9" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>
                 </div>
+               <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList9" ClientInstanceName="radioButtonList9" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
                  <div class="col">
                     <div class="row align-items-center">
                         <div class="col-1">
@@ -600,18 +723,54 @@
 
          <asp:Panel ID="Panel16" runat="server" Visible="true">
            <div class="row mt-1">
-                 <div class="col-3 text-center">
+                 <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre10" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>                 
                 </div>
-                <div class="col-3 text-center">
+               <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList10" ClientInstanceName="radioButtonList10" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
+                <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre11" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>
                 </div>
-                <div class="col-3 text-center">
+               <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList11" ClientInstanceName="radioButtonList11" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
+                <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre12" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>
                 </div>
+               <div class="col-auto">
+                     <dx:ASPxRadioButtonList ReadOnly="true" ID="ASPxRadioButtonList12" ClientInstanceName="radioButtonList12" runat="server" Caption="Es Apto ?"
+                        CaptionSettings-VerticalAlign="Middle" RepeatDirection="Horizontal">
+                        <Items>
+                            <dx:ListEditItem Text="Si" Value="1" />
+                            <dx:ListEditItem Text="No" Value="2" />
+                        </Items>
+
+                        <CaptionSettings HorizontalAlign="Center" Position="Top"></CaptionSettings>
+                    </dx:ASPxRadioButtonList>
+                </div>
+
                  <div class="col">
                     <div class="row align-items-center">
                         <div class="col-1">
@@ -627,7 +786,7 @@
        <div class="row mt-3" >
            <div class="col" >
                 <h5 class="form-text">Plan de respuesta en caso de emergencia</h5>
-               <dx:ASPxMemo ID="txtPlanRespuesta" runat="server" Height="71px" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxMemo>
+               <dx:ASPxMemo ID="txtPlanRespuesta" runat="server" Height="150px" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxMemo>
            </div>
        </div>
 
@@ -655,6 +814,8 @@
 
 
         <dx:ASPxHiddenField ID="hfIsNew" runat="server" ClientInstanceName="hfIsNew"> </dx:ASPxHiddenField>
+        
+        <dx:ASPxHiddenField ID="hfUserIdElaboro" runat="server" ClientInstanceName="hfUserIdElaboro"> </dx:ASPxHiddenField>
 
     </form>
 

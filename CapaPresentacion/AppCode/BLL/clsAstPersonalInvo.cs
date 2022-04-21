@@ -19,7 +19,8 @@ namespace CapaPresentacion.AppCode.BLL
         public int personal_id { get; set; }
         public string nombre { get; set; }
         public string email { get; set; }
-  
+        public int apto_trabajo { get; set; }
+
 
         #endregion //Variables
 
@@ -41,6 +42,16 @@ namespace CapaPresentacion.AppCode.BLL
             param[2] = new SqlParameter("@p_ast_id", ast_id);
 
             return objDBBridge.ExecuteNonQuery("spInsertAstPI", param);
+        }
+
+        public int EsAptoAstPI_Upd()
+        {
+            SqlParameter[] param = new SqlParameter[3];
+            param[0] = new SqlParameter("@p_nombre", nombre);
+            param[1] = new SqlParameter("@p_ast_id", ast_id);
+            param[2] = new SqlParameter("@p_apto_trabajo", apto_trabajo);
+
+            return objDBBridge.ExecuteNonQuery("spEsAptoAstPI_Upd", param);
         }
 
 

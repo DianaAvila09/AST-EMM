@@ -96,6 +96,12 @@
   <ItemGroup>
     <Content Include="auth\userQuery.aspx" />
     <Content Include="auth\userReg.aspx" />
+    <Content Include="catalogos\deptosQuery.aspx" />
+    <Content Include="catalogos\deptosReg.aspx" />
+    <Content Include="catalogos\comite.aspx" />
+    <Content Include="catalogos\comiteReg.aspx" />
+    <Content Include="catalogos\vigilantesReg.aspx" />
+    <Content Include="catalogos\vigilantesQuery.aspx" />
     <Content Include="catalogos\doctosQuery.aspx" />
     <Content Include="catalogos\doctosReg.aspx" />
     <Content Include="css\bootstrap.css" />
@@ -109,6 +115,7 @@
     <Content Include="js\JavaScript.js" />
     <Content Include="login.aspx" />
     <Content Include="mainMenu.aspx" />
+    <Content Include="main\autorizaDocAst.aspx" />
     <Content Include="main\enterado.aspx" />
     <Content Include="main\capAst.aspx" />
     <Content Include="main\autoriza.aspx" />
@@ -138,6 +145,48 @@
     </Compile>
     <Compile Include="auth\userReg.aspx.designer.cs">
       <DependentUpon>userReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\deptosQuery.aspx.cs">
+      <DependentUpon>deptosQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="catalogos\deptosQuery.aspx.designer.cs">
+      <DependentUpon>deptosQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\deptosReg.aspx.cs">
+      <DependentUpon>deptosReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="catalogos\deptosReg.aspx.designer.cs">
+      <DependentUpon>deptosReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\comite.aspx.cs">
+      <DependentUpon>comite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="catalogos\comite.aspx.designer.cs">
+      <DependentUpon>comite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\comiteReg.aspx.cs">
+      <DependentUpon>comiteReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="catalogos\comiteReg.aspx.designer.cs">
+      <DependentUpon>comiteReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\vigilantesReg.aspx.cs">
+      <DependentUpon>vigilantesReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="catalogos\vigilantesReg.aspx.designer.cs">
+      <DependentUpon>vigilantesReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="catalogos\vigilantesQuery.aspx.cs">
+      <DependentUpon>vigilantesQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="catalogos\vigilantesQuery.aspx.designer.cs">
+      <DependentUpon>vigilantesQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="catalogos\doctosQuery.aspx.cs">
       <DependentUpon>doctosQuery.aspx</DependentUpon>
@@ -169,6 +218,13 @@
     </Compile>
     <Compile Include="mainMenu.aspx.designer.cs">
       <DependentUpon>mainMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="main\autorizaDocAst.aspx.cs">
+      <DependentUpon>autorizaDocAst.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="main\autorizaDocAst.aspx.designer.cs">
+      <DependentUpon>autorizaDocAst.aspx</DependentUpon>
     </Compile>
     <Compile Include="main\enterado.aspx.cs">
       <DependentUpon>enterado.aspx</DependentUpon>

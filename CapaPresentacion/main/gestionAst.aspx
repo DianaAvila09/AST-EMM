@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="col-12">
-                         <asp:Button CssClass="btn btn-primary btn-sm" runat="server" Text="Agregar documento" OnClick="agregar_Click" ></asp:Button>
+                         <asp:Button ID="btnAdd" CssClass="btn btn-primary btn-sm" runat="server" Text="Agregar documento" OnClick="agregar_Click" ></asp:Button>
                     </div>
 
                 </div>

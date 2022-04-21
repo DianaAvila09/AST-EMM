@@ -20,11 +20,21 @@ namespace CapaPresentacion.main
         clsAstPersonalInvo objPersonalInvolucrado = new clsAstPersonalInvo();
         clsAstGpoAprobacion objGpoAprob = new clsAstGpoAprobacion();
 
+        string _roleNombre;
+        Int16 _usrIdLogin;
 
         object[] values;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            _usrIdLogin = Convert.ToInt16(Session["userid"].ToString());
+            _roleNombre = Session["rol_nombre"].ToString();
+
+            if (_roleNombre == "medical_rol")
+            {
+                this.btnAdd.Enabled = false;
+            }
+
             ClientScript.GetPostBackEventReference(this, string.Empty);
             if (Request.Form["__EVENTTARGET"] == "btnUpd_Click")
             {
@@ -63,8 +73,11 @@ namespace CapaPresentacion.main
         }
         protected void cargaGrid()
         {
-            objDocAst.tipo_id = int.Parse(ASPxComboBox1.Value.ToString());
+            
 
+            objDocAst.tipo_id = int.Parse(ASPxComboBox1.Value.ToString());
+            objDocAst.user_id = _usrIdLogin;
+            objDocAst.rol_name = _roleNombre;
 
             this.ASPxGridView1.DataSource = objDocAst.DocAst_Sel();
             this.ASPxGridView1.DataBind();
