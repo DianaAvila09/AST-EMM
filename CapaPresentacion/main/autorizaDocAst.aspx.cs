@@ -38,7 +38,7 @@ namespace CapaPresentacion.main
                 //}
 
 
-                _astid = 1;   // Convert.ToInt32(Request.QueryString["astid"]);
+                _astid = Convert.ToInt32(Request.QueryString["astid"]);
                 
 
                 this.lblMotivoRechazo.Visible = false;
@@ -99,6 +99,7 @@ namespace CapaPresentacion.main
                     BuscarAST_PracticasProhibidas();
                     BuscarAST_PersonalInvolucrado();
                     BuscarAST_GpoAprobacion();
+                    BuscarAST_GpoComite();
                 }
 
 
@@ -157,6 +158,10 @@ namespace CapaPresentacion.main
                 txtContactoPlanta.Text = dr["email_contactoPlanta"].ToString();
                 txtPlanRespuesta.Text = dr["plan_respuesta"].ToString();
                 txtElabora.Text = dr["elaboro"].ToString();
+                chck1.Checked = Convert.ToBoolean(dr["trabajo_enAlturas"].ToString());
+                chck2.Checked = Convert.ToBoolean(dr["trabajo_equipoMovil"].ToString());
+                chck3.Checked = Convert.ToBoolean(dr["trabajo_espacioConfinado"].ToString());
+
                 //_role = dr["rol_nombre"].ToString();
 
                 this.lblEstatus2.Text = dr["estatus"].ToString();
@@ -185,28 +190,14 @@ namespace CapaPresentacion.main
                 }
 
 
-                //if (dr["estatus"].ToString() == "Rechazado" || dr["estatus"].ToString() == "Autorizado")
-                //{
-                //    this.btnGrabaFinal.Enabled = false;
-                //    this.btnGrabar.Enabled = false;
-                //    this.btnEliminar.Enabled = false;
+                if (dr["estatus"].ToString() == "Rechazado" || dr["estatus"].ToString() == "Autorizado")
+                {
+                    this.txtAutorizaContacto.Text = txtContactoPlanta.Text;
 
-                //    this.txtAutorizaContacto.Text = txtContactoPlanta.Text;
+                }
 
-                //}
-                //else
-                //{
-                //    // validar si es usuario que se firma es el mismo que es dueño del AST
 
-                //    if (  _usrIdLogin != Convert.ToInt16(dr["user_id"].ToString()) && (_roleNombre != "admin_rol" )   )
-                //    {
-                //        this.btnGrabaFinal.Enabled = false;
-                //        this.btnGrabar.Enabled = false;
-                //        this.btnEliminar.Enabled = false;
-                //    }
-                //}
-
-               if ( txtMotivorechazo.Text != "")
+                if ( txtMotivorechazo.Text != "")
                 {
                     this.lblMotivoRechazo.Visible = true;
                     this.txtMotivorechazo.Visible = true;
@@ -236,6 +227,22 @@ namespace CapaPresentacion.main
 
 
         }
+        protected void BuscarAST_GpoComite()
+        {
+            DataTable dt = new DataTable();
+            objAstGpoAprobacion.ast_id = _astid;
+
+            dt = objAstGpoAprobacion.DocAstGpoComite_Sel().Tables[0];
+            if (dt.Rows.Count != 0)
+            {
+                DataRow dr;
+                dr = dt.Rows[0];
+                this.txtAutorizaComite.Text = dr["nombre"].ToString();
+
+            }
+
+
+        }
         protected void BuscarAST_PersonalInvolucrado()
         {
 
@@ -256,15 +263,47 @@ namespace CapaPresentacion.main
                     {
                         case 0:
                             txtNombre1.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList1.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList1.Items[1].Selected = true;
+                            }
                             break;
                         case 1:
                             txtNombre2.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList2.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList2.Items[1].Selected = true;
+                            }
                             break;
                         case 2:
                             txtNombre3.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList3.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList3.Items[1].Selected = true;
+                            }
                             break;
                         case 3:
                             txtNombre4.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList4.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList4.Items[1].Selected = true;
+                            }
                             if (txtNombre4.Text != "")
                             {
                                 this.Panel14.Visible = true;
@@ -272,6 +311,14 @@ namespace CapaPresentacion.main
                             break;
                         case 4:
                             txtNombre5.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList5.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList5.Items[1].Selected = true;
+                            }
                             if (txtNombre5.Text != "")
                             {
                                 this.Panel14.Visible = true;
@@ -279,6 +326,14 @@ namespace CapaPresentacion.main
                             break;
                         case 5:
                             txtNombre6.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList6.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList6.Items[1].Selected = true;
+                            }
                             if (txtNombre6.Text != "")
                             {
                                 this.Panel14.Visible = true;
@@ -286,6 +341,14 @@ namespace CapaPresentacion.main
                             break;
                         case 6:
                             txtNombre7.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList7.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList7.Items[1].Selected = true;
+                            }
                             if (txtNombre7.Text != "")
                             {
                                 this.Panel15.Visible = true;
@@ -293,6 +356,14 @@ namespace CapaPresentacion.main
                             break;
                         case 7:
                             txtNombre8.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList8.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList8.Items[1].Selected = true;
+                            }
                             if (txtNombre8.Text != "")
                             {
                                 this.Panel15.Visible = true;
@@ -300,6 +371,14 @@ namespace CapaPresentacion.main
                             break;
                         case 8:
                             txtNombre9.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList9.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList9.Items[1].Selected = true;
+                            }
                             if (txtNombre9.Text != "")
                             {
                                 this.Panel15.Visible = true;
@@ -307,6 +386,14 @@ namespace CapaPresentacion.main
                             break;
                         case 9:
                             txtNombre10.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList10.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList10.Items[1].Selected = true;
+                            }
                             if (txtNombre10.Text != "")
                             {
                                 this.Panel16.Visible = true;
@@ -314,6 +401,14 @@ namespace CapaPresentacion.main
                             break;
                         case 10:
                             txtNombre11.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList11.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList11.Items[1].Selected = true;
+                            }
                             if (txtNombre11.Text != "")
                             {
                                 this.Panel16.Visible = true;
@@ -321,12 +416,20 @@ namespace CapaPresentacion.main
                             break;
                         case 11:
                             txtNombre12.Text = dr["nombre"].ToString();
+                            if (dr["apto_trabajo"].ToString() == "0")
+                            {
+                                this.ASPxRadioButtonList12.Items[0].Selected = true;
+                            }
+                            else if (dr["apto_trabajo"].ToString() == "1")
+                            {
+                                this.ASPxRadioButtonList12.Items[1].Selected = true;
+                            }
                             if (txtNombre12.Text != "")
                             {
                                 this.Panel16.Visible = true;
                             }
                             break;
-                       
+
                     }
 
                     i = i + 1;
@@ -337,6 +440,7 @@ namespace CapaPresentacion.main
 
                 }
                 while (i <= (dt.Rows.Count - 1));
+
 
 
                 //while ( i < ( dt.Rows.Count ) )
@@ -565,6 +669,7 @@ namespace CapaPresentacion.main
             this.txtEPP.Text = "";
             this.txtAutorizaContacto.Text = "";
             this.txtAutorizaPlanta.Text = "";
+            this.txtAutorizaComite.Text = "";
 
             // Secuencias de trabajo
             this.txtSecNum1.Text = "1";
@@ -1748,5 +1853,16 @@ namespace CapaPresentacion.main
 
         }
 
+        protected void btnAutoriza_Click(object sender, EventArgs e)
+        {
+            _astid = Convert.ToInt32(Request.QueryString["astid"]);
+            Response.Redirect("autoriza.aspx?astid=" + _astid + "&approvedstatus=0");
+        }
+
+        protected void btnRechaza_Click(object sender, EventArgs e)
+        {
+            _astid = Convert.ToInt32(Request.QueryString["astid"]);
+            Response.Redirect("autoriza.aspx?astid=" + _astid+ "&approvedstatus=1" );
+        }
     }
 }

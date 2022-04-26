@@ -107,17 +107,21 @@
 
 
             <div class="row mt-5">
-                 <div class="col-4 text-center">
+                 <div class="col-3 text-center">
                     <dx:ASPxTextBox ID="txtElabora" runat="server" Width="100%" CssClass="form-control" MaxLength="500" ReadOnly="true" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elabora: Nombre y firma</label>
                 </div>
-                <div class="col-4 text-center">
+                <div class="col-3 text-center">
                     <dx:ASPxTextBox ID="txtAutorizaContacto" runat="server" Width="100%" CssClass="form-control" MaxLength="500" ReadOnly="true" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label runat="server" id="lblContactoAutorizaRechaza"  class="col-form-label">Contacto de Planta: Nombre y Firma</label>
                 </div>
-                <div class="col-4 text-center">
-                    <dx:ASPxTextBox ID="txtAutorizaPlanta" runat="server" Width="100%" CssClass="form-control" MaxLength="500" ReadOnly="true" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
+                 <div class="col-3 text-center">
+                    <dx:ASPxTextBox ID="txtAutorizaComite" runat="server" Width="100%" CssClass="form-control" MaxLength="500" ReadOnly="true" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Seguridad Planta: Nombre y Firma</label>
+                </div>
+                <div class="col-3 text-center">
+                    <dx:ASPxTextBox ID="txtAutorizaPlanta" runat="server" Width="100%" CssClass="form-control" MaxLength="500" ReadOnly="true" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
+                    <label class="col-form-label">Vigilancia: Nombre y Firma</label>
                 </div>
             </div>
 

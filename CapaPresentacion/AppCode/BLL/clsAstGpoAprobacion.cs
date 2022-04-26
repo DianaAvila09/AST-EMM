@@ -32,8 +32,14 @@ namespace CapaPresentacion.AppCode.BLL
 
             return objDBBridge.ExecuteDataset("spConsultaAstGpoAprobacion_byId", param);
         }
+        public DataSet DocAstGpoComite_Sel()
+        {
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@p_aspid", ast_id);
 
-        
+            return objDBBridge.ExecuteDataset("spConsultaAstGpoComite_byId", param);
+        }
+
         #endregion
 
     }

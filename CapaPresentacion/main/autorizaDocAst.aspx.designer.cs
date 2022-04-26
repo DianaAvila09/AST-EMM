@@ -175,6 +175,15 @@ namespace CapaPresentacion.main {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContactoAutorizaRechaza;
         
         /// <summary>
+        /// txtAutorizaComite control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtAutorizaComite;
+        
+        /// <summary>
         /// txtAutorizaPlanta control.
         /// </summary>
         /// <remarks>
@@ -877,6 +886,33 @@ namespace CapaPresentacion.main {
         protected global::System.Web.UI.WebControls.Button btnPP13;
         
         /// <summary>
+        /// chck1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCheckBox chck1;
+        
+        /// <summary>
+        /// chck2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCheckBox chck2;
+        
+        /// <summary>
+        /// chck3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCheckBox chck3;
+        
+        /// <summary>
         /// txtNombre1 control.
         /// </summary>
         /// <remarks>
@@ -884,6 +920,15 @@ namespace CapaPresentacion.main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtNombre1;
+        
+        /// <summary>
+        /// ASPxRadioButtonList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList1;
         
         /// <summary>
         /// txtNombre2 control.
@@ -895,6 +940,15 @@ namespace CapaPresentacion.main {
         protected global::DevExpress.Web.ASPxTextBox txtNombre2;
         
         /// <summary>
+        /// ASPxRadioButtonList2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList2;
+        
+        /// <summary>
         /// txtNombre3 control.
         /// </summary>
         /// <remarks>
@@ -902,6 +956,15 @@ namespace CapaPresentacion.main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtNombre3;
+        
+        /// <summary>
+        /// ASPxRadioButtonList3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList3;
         
         /// <summary>
         /// btnPI0 control.
@@ -931,6 +994,15 @@ namespace CapaPresentacion.main {
         protected global::DevExpress.Web.ASPxTextBox txtNombre4;
         
         /// <summary>
+        /// ASPxRadioButtonList4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList4;
+        
+        /// <summary>
         /// txtNombre5 control.
         /// </summary>
         /// <remarks>
@@ -940,6 +1012,15 @@ namespace CapaPresentacion.main {
         protected global::DevExpress.Web.ASPxTextBox txtNombre5;
         
         /// <summary>
+        /// ASPxRadioButtonList5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList5;
+        
+        /// <summary>
         /// txtNombre6 control.
         /// </summary>
         /// <remarks>
@@ -947,6 +1028,15 @@ namespace CapaPresentacion.main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtNombre6;
+        
+        /// <summary>
+        /// ASPxRadioButtonList6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList6;
         
         /// <summary>
         /// btnPI1 control.
@@ -985,6 +1075,15 @@ namespace CapaPresentacion.main {
         protected global::DevExpress.Web.ASPxTextBox txtNombre7;
         
         /// <summary>
+        /// ASPxRadioButtonList7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList7;
+        
+        /// <summary>
         /// txtNombre8 control.
         /// </summary>
         /// <remarks>
@@ -994,6 +1093,15 @@ namespace CapaPresentacion.main {
         protected global::DevExpress.Web.ASPxTextBox txtNombre8;
         
         /// <summary>
+        /// ASPxRadioButtonList8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList8;
+        
+        /// <summary>
         /// txtNombre9 control.
         /// </summary>
         /// <remarks>
@@ -1001,6 +1109,15 @@ namespace CapaPresentacion.main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtNombre9;
+        
+        /// <summary>
+        /// ASPxRadioButtonList9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList9;
         
         /// <summary>
         /// btnPI3 control.
@@ -1039,6 +1156,15 @@ namespace CapaPresentacion.main {
         protected global::DevExpress.Web.ASPxTextBox txtNombre10;
         
         /// <summary>
+        /// ASPxRadioButtonList10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList10;
+        
+        /// <summary>
         /// txtNombre11 control.
         /// </summary>
         /// <remarks>
@@ -1048,6 +1174,15 @@ namespace CapaPresentacion.main {
         protected global::DevExpress.Web.ASPxTextBox txtNombre11;
         
         /// <summary>
+        /// ASPxRadioButtonList11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList11;
+        
+        /// <summary>
         /// txtNombre12 control.
         /// </summary>
         /// <remarks>
@@ -1055,6 +1190,15 @@ namespace CapaPresentacion.main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtNombre12;
+        
+        /// <summary>
+        /// ASPxRadioButtonList12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRadioButtonList ASPxRadioButtonList12;
         
         /// <summary>
         /// btnPI5 control.

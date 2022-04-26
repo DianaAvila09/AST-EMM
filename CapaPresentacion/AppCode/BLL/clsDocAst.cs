@@ -40,6 +40,7 @@ namespace CapaPresentacion.AppCode.BLL
         public bool trabajo_enAlturas { get; set; }
         public bool trabajo_equipoMovil { get; set; }
         public bool trabajo_espacioConfinado { get; set; }
+        public int comite_id { get; set; }
 
 
         #endregion //Variables
@@ -158,6 +159,13 @@ namespace CapaPresentacion.AppCode.BLL
             param[1] = new SqlParameter("@p_vigilante_id", vigilante_id);
             return objDBBridge.ExecuteNonQuery("spMailAstEMM_vigilancia", param);
         }
+        public int EnviaMailComite_Proc()
+        {
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@p_ast_id", ast_id);
+            param[1] = new SqlParameter("@p_comite_id", comite_id);
+            return objDBBridge.ExecuteNonQuery("spMailAstEMM_comite", param);
+        }
 
         public int EstatusAst_Upd()
         {
@@ -192,6 +200,11 @@ namespace CapaPresentacion.AppCode.BLL
             return objDBBridge.ExecuteDataset("spVigilantes_sel");
         }
 
+        public DataSet GpoComite_Sel()
+        {
+            return objDBBridge.ExecuteDataset("spGpoComite_sel");
+        }
+
         public int BitacoraVigilantes_insert()
         {
             SqlParameter[] param = new SqlParameter[2];
@@ -199,6 +212,16 @@ namespace CapaPresentacion.AppCode.BLL
             param[1] = new SqlParameter("@p_vigilante_id", vigilante_id);
             
             return objDBBridge.ExecuteNonQuery("spInsBitacoraVigilantes", param);
+        }
+
+        public int BitacoraComite_insert()
+        {
+            SqlParameter[] param = new SqlParameter[3];
+            param[0] = new SqlParameter("@p_ast_id", ast_id);
+            param[1] = new SqlParameter("@p_comite_id", comite_id);
+            param[2] = new SqlParameter("@p_estatus", estatus);
+
+            return objDBBridge.ExecuteNonQuery("spInsBitacoraComite", param);
         }
         #endregion
 

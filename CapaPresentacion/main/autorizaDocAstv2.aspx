@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="autorizaDocAst.aspx.cs" Inherits="CapaPresentacion.main.autorizaDocAst" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="autorizaDocAstv2.aspx.cs" Inherits="CapaPresentacion.main.autorizaDocAstv2" %>
 
 <%@ Register Assembly="DevExpress.Web.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 
@@ -531,7 +531,7 @@
             </div>
         </div>
 
-         <div class="row">
+          <div class="row">
             <div class="col-auto">
                 <dx:ASPxCheckBox ID="chck1" runat="server"   Text="Trabajo en alturas" Font-Size="Large" CheckState="Unchecked"></dx:ASPxCheckBox>
             </div>
@@ -546,7 +546,7 @@
         </div>
 
 
-            <div class="row mt-5">
+              <div class="row mt-5">
                  <div class="col-2 text-center">
                     <dx:ASPxTextBox ID="txtNombre1" runat="server" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxTextBox>
                     <label class="col-form-label">Elaboro: Nombre y firma</label>   

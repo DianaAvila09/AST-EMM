@@ -74,7 +74,6 @@ namespace CapaPresentacion.main
         protected void cargaGrid()
         {
             
-
             objDocAst.tipo_id = int.Parse(ASPxComboBox1.Value.ToString());
             objDocAst.user_id = _usrIdLogin;
             objDocAst.rol_name = _roleNombre;

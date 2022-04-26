@@ -115,6 +115,8 @@
     <Content Include="js\JavaScript.js" />
     <Content Include="login.aspx" />
     <Content Include="mainMenu.aspx" />
+    <Content Include="main\autorizacomite.aspx" />
+    <Content Include="main\autorizaDocAstv2.aspx" />
     <Content Include="main\autorizaDocAst.aspx" />
     <Content Include="main\enterado.aspx" />
     <Content Include="main\capAst.aspx" />
@@ -218,6 +220,20 @@
     </Compile>
     <Compile Include="mainMenu.aspx.designer.cs">
       <DependentUpon>mainMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="main\autorizacomite.aspx.cs">
+      <DependentUpon>autorizacomite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="main\autorizacomite.aspx.designer.cs">
+      <DependentUpon>autorizacomite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="main\autorizaDocAstv2.aspx.cs">
+      <DependentUpon>autorizaDocAstv2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="main\autorizaDocAstv2.aspx.designer.cs">
+      <DependentUpon>autorizaDocAstv2.aspx</DependentUpon>
     </Compile>
     <Compile Include="main\autorizaDocAst.aspx.cs">
       <DependentUpon>autorizaDocAst.aspx</DependentUpon>
