@@ -21,72 +21,103 @@ namespace CapaPresentacion.main
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Page page = HttpContext.Current.Handler as Page;
-            //ScriptManager.RegisterStartupScript(page, page.GetType(), null, "document.getElementById('divPrincipal').style.display = 'inline' ", true);
-             _astid = Convert.ToInt16(Request.QueryString["astId"]);
-            _comiteId = Convert.ToInt16(Request.QueryString["vigid"]);
+           
 
-
-
-            if (_astid !=  0)
+            if (!Page.IsPostBack)
             {
-                Int16 intApproved;
-                intApproved = Convert.ToInt16(Request.QueryString["ApprovedStatus"].ToString());
+                //Page page = HttpContext.Current.Handler as Page;
+                //ScriptManager.RegisterStartupScript(page, page.GetType(), null, "document.getElementById('divPrincipal').style.display = 'inline' ", true);
+                _astid = Convert.ToInt16(Request.QueryString["astId"]);
+                _comiteId = Convert.ToInt16(Request.QueryString["vigid"]);
 
-                // buscar la info del ast
-                this.BucarAST_Formato();
 
-                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", " document.getElementById('frm1').style.display = 'inline' ", true);
-
-                if (intApproved == 0 )
+                if (_astid != 0)
                 {
-                    // autorizado
+                    Int16 intApproved;
+                    intApproved = Convert.ToInt16(Request.QueryString["ApprovedStatus"].ToString());
 
-                    this.lblAceptado.Visible = true;
+                    // buscar la info del ast
+                    this.BucarAST_Formato();
 
-                    this.tituloRechazo.Visible = false;
-                    this.txtMotivo.Visible = false;
-                    this.btnEnviar.Visible = false;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", " document.getElementById('frm1').style.display = 'inline' ", true);
 
-                    // Actualiza el estatus
-                    objDocAst.ast_id = _astid;
-                    objDocAst.estatus = "Autorizado";
-                    objDocAst.isAutorizado = true;
+                    if (intApproved == 0)
+                    {
+                        // autorizado
 
-                    objDocAst.EstatusAst_Upd();
+                        this.lblAceptado.Visible = true;
 
-                    // Actualiza en la bitacora de registro del COMITE 
-                    objDocAst.comite_id = _comiteId;
+                        this.tituloRechazo.Visible = false;
+                        this.txtMotivo.Visible = false;
+                        this.btnEnviar.Visible = false;
 
-                    objDocAst.BitacoraComite_insert();
+                        // Actualiza el estatus
+                        objDocAst.ast_id = _astid;
+                        objDocAst.estatus = "Autorizado";
+                        objDocAst.isAutorizado = true;
+
+                        // antes de actualizar el docto. se tendria que checar si no hay otro registro que llego primero
+                        // true = existe  false = no existe
+
+                        DataTable dt = new DataTable();
+                        var result = 0;
+                        dt = objDocAst.ExisteDatoEnComiteDelDocto().Tables[0];
+                        if (dt.Rows.Count != 0)
+                        {
+                            DataRow dr;
+                            dr = dt.Rows[0];
+                            result = Convert.ToInt16(dr["result"].ToString());
+
+                        }
+
+                        if (result == 0)
+                        {
+                            objDocAst.EstatusAst_Upd();
+                        }
+
+                       
 
 
+                        // Actualiza en la bitacora de registro del COMITE 
+                        objDocAst.comite_id = _comiteId;
+
+                        objDocAst.BitacoraComite_insert();
+
+
+
+                    }
+                    else
+                    {
+
+                        // rechazado
+                        objDocAst.ast_id = _astid;
+                        objDocAst.estatus = "Rechazado";
+                        objDocAst.comite_id = _comiteId;
+
+                        objDocAst.BitacoraComite_insert();
+
+
+                        this.tituloRechazo.Visible = true;
+                        this.txtMotivo.Visible = true;
+                        this.btnEnviar.Visible = true;
+
+                        txtMotivo.Focus();
+
+
+                    }
 
                 }
                 else
                 {
-
-                    // rechazado
-                    objDocAst.ast_id = _astid;
-                    objDocAst.estatus = "Rechazado";
-                    objDocAst.comite_id = _comiteId;
-                    objDocAst.BitacoraComite_insert();
-
-
-                    this.tituloRechazo.Visible = true;
-                    this.txtMotivo.Visible = true;
-                    this.btnEnviar.Visible = true;
-
-                    txtMotivo.Focus();
-
-
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", " document.getElementById('frm1').style.display = 'none' ", true);
                 }
 
+
+
             }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", " document.getElementById('frm1').style.display = 'none' ", true);
-            }
+
+
+         
         }
 
         protected bool MotivoRequerido()
@@ -120,7 +151,25 @@ namespace CapaPresentacion.main
             objDocAst.isAutorizado = false;
             objDocAst.motivo_rechazo = txtMotivo.Text;
 
-            objDocAst.EstatusAst_Upd();
+            // antes de actualizar el docto. se tendria que checar si no hay otro registro que llego primero
+            // true = existe  false = no existe
+
+            DataTable dt = new DataTable();
+            var result = 0;
+            dt = objDocAst.ExisteDatoEnComiteDelDocto().Tables[0];
+            if (dt.Rows.Count != 0)
+            {
+                DataRow dr;
+                dr = dt.Rows[0];
+                result = Convert.ToInt16(dr["result"].ToString());
+
+            }
+
+            if (result == 0)
+            {
+                objDocAst.EstatusAst_Upd();
+            }
+
 
         }
 
@@ -130,6 +179,7 @@ namespace CapaPresentacion.main
 
             DataTable dt = new DataTable();
             objDocAst.ast_id = _astid;
+            this.lblFolio.Value = _astid;
 
             dt = objDocAst.DocAstFormato_Sel().Tables[0];
             if (dt.Rows.Count != 0)

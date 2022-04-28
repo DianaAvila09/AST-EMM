@@ -39,7 +39,8 @@ namespace CapaPresentacion.main
 
 
                 _astid = Convert.ToInt32(Request.QueryString["astid"]);
-                
+                txtFolio.Text = Convert.ToString(_astid);
+
 
                 this.lblMotivoRechazo.Visible = false;
                 this.txtMotivorechazo.Visible = false;
@@ -161,7 +162,9 @@ namespace CapaPresentacion.main
                 chck1.Checked = Convert.ToBoolean(dr["trabajo_enAlturas"].ToString());
                 chck2.Checked = Convert.ToBoolean(dr["trabajo_equipoMovil"].ToString());
                 chck3.Checked = Convert.ToBoolean(dr["trabajo_espacioConfinado"].ToString());
+                chkTerminos.Checked = Convert.ToBoolean(dr["acepto_terminos"].ToString());
 
+               
                 //_role = dr["rol_nombre"].ToString();
 
                 this.lblEstatus2.Text = dr["estatus"].ToString();
@@ -1864,5 +1867,7 @@ namespace CapaPresentacion.main
             _astid = Convert.ToInt32(Request.QueryString["astid"]);
             Response.Redirect("autoriza.aspx?astid=" + _astid+ "&approvedstatus=1" );
         }
+
+       
     }
 }

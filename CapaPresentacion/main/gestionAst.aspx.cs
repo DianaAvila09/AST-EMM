@@ -115,6 +115,9 @@ namespace CapaPresentacion.main
             values = ASPxGridView1.GetRowValues(visibleIndex, "ast_id", "") as object[];
 
             int astId = int.Parse(values[0].ToString());
+
+           // Response.Redirect("../reports/reportAST.aspx?p_astid=" + astId);
+
             pdfView(astId);
 
             //objClsAP.LogPOId = int.Parse(values[0].ToString());

@@ -33,7 +33,6 @@ namespace CapaPresentacion.main
                // this.ASPxRadioButtonList1.Items[1].Selected = true;
 
                
-
                 if ((Session["useremail"] == null) || (Session["useremail"].ToString() == ""))
                 {
                     Response.Redirect("../login.aspx");
@@ -41,7 +40,7 @@ namespace CapaPresentacion.main
 
 
                 _astid = Convert.ToInt32(Request.QueryString["astid"]);
-                
+                txtFolio.Text = Convert.ToString(_astid);
 
                 this.lblMotivoRechazo.Visible = false;
                 this.txtMotivorechazo.Visible = false;
@@ -135,7 +134,13 @@ namespace CapaPresentacion.main
 
                 this.txtArea.Focus();
 
+            if (_roleNombre == "medical_rol")
+            {
+                btnCancelDocto.Visible = true;
+                btnEliminar.Visible = false;
 
+                btnCancelDocto.Enabled = true;
+            }
 
         }
 
@@ -165,6 +170,10 @@ namespace CapaPresentacion.main
                 chck1.Checked = Convert.ToBoolean(dr["trabajo_enAlturas"].ToString());
                 chck2.Checked = Convert.ToBoolean(dr["trabajo_equipoMovil"].ToString());
                 chck3.Checked = Convert.ToBoolean(dr["trabajo_espacioConfinado"].ToString());
+                chkTerminos.Checked = Convert.ToBoolean(dr["acepto_terminos"].ToString());
+
+                chkTerminos_CheckedChanged(null,null);
+
 
                 //_role = dr["rol_nombre"].ToString();
 
@@ -188,17 +197,22 @@ namespace CapaPresentacion.main
                     case "Rechazado":
                         this.lblEstatus2.CssClass = "text-danger";
                         break;
+                    case "Cancelado":
+                        this.lblEstatus2.CssClass = "text-danger";
+                        break;
                     default:
                         this.lblEstatus2.CssClass = "text-primary";
                         break;
                 }
 
 
-                if (dr["estatus"].ToString() == "Rechazado" || dr["estatus"].ToString() == "Autorizado")
+                if (dr["estatus"].ToString() == "Rechazado" || dr["estatus"].ToString() == "Autorizado" || dr["estatus"].ToString() == "Cancelado" )
                 {
                     this.btnGrabaFinal.Enabled = false;
                     this.btnGrabar.Enabled = false;
                     this.btnEliminar.Enabled = false;
+
+                    this.chkTerminos.ReadOnly = true;
 
                     this.txtAutorizaContacto.Text = txtContactoPlanta.Text;
 
@@ -233,8 +247,10 @@ namespace CapaPresentacion.main
                             this.btnGrabaFinal.Enabled = false;
                             this.btnGrabar.Enabled = false;
                             this.btnEliminar.Enabled = false;
-                    
-                        
+
+                            this.chkTerminos.ReadOnly = true;
+
+
                     }
                 }
 
@@ -777,6 +793,10 @@ namespace CapaPresentacion.main
             this.chck2.Checked = false;
             this.chck3.Checked = false;
 
+            this.chkTerminos.Checked = false;
+
+            chkTerminos_CheckedChanged(null, null);
+
 
         }
 
@@ -1109,6 +1129,7 @@ namespace CapaPresentacion.main
             objDocAst.trabajo_enAlturas = this.chck1.Checked;
             objDocAst.trabajo_equipoMovil = this.chck2.Checked;
             objDocAst.trabajo_espacioConfinado = this.chck3.Checked;
+            objDocAst.acepto_terminos = this.chkTerminos.Checked;
 
             // lanzar el metodo insert
             result = objDocAst.Doctos_insert();
@@ -1407,6 +1428,7 @@ namespace CapaPresentacion.main
             objDocAst.trabajo_enAlturas = this.chck1.Checked;
             objDocAst.trabajo_equipoMovil = this.chck2.Checked;
             objDocAst.trabajo_espacioConfinado = this.chck3.Checked;
+            objDocAst.acepto_terminos = this.chkTerminos.Checked;
 
             objDocAst.DocAstFormato_Upd();
 
@@ -2121,6 +2143,11 @@ namespace CapaPresentacion.main
             this.txtAutorizaPlanta.ReadOnly = true;
             this.txtAutorizaComite.ReadOnly = true;
 
+            this.chck1.ReadOnly = true;
+            this.chck2.ReadOnly = true;
+            this.chck3.ReadOnly = true;
+            this.chkTerminos.ReadOnly = true;
+
             // Secuencias de trabajo
             this.txtSecNum1.ReadOnly = true;
             this.ASPxMemo1.ReadOnly = true;
@@ -2242,5 +2269,29 @@ namespace CapaPresentacion.main
 
         }
 
+        protected void chkTerminos_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkTerminos.Checked == true)
+            {
+                this.btnGrabaFinal.Enabled = true;
+            }
+            else
+            {
+                this.btnGrabaFinal.Enabled = false;
+            }
+
+        }
+
+        protected void btnCancelDocto_Click(object sender, EventArgs e)
+        {
+
+            objDocAst.ast_id = _astid;
+            objDocAst.estatus = "Cancelado";
+
+            objDocAst.EstatusAstCancelado_Upd();
+
+            btnCancelar_Click(null, null);
+
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace CapaPresentacion.AppCode.BLL
         public bool trabajo_equipoMovil { get; set; }
         public bool trabajo_espacioConfinado { get; set; }
         public int comite_id { get; set; }
+        public bool acepto_terminos { get; set; }
 
 
         #endregion //Variables
@@ -69,7 +70,7 @@ namespace CapaPresentacion.AppCode.BLL
 
         public int Doctos_insert()
         {
-            SqlParameter[] param = new SqlParameter[18];
+            SqlParameter[] param = new SqlParameter[19];
             param[0] = new SqlParameter("@p_area", area);
             param[1] = new SqlParameter("@p_fecha", fecha_creacion);
             param[2] = new SqlParameter("@p_hora_inicio", hora_inicio);
@@ -88,6 +89,7 @@ namespace CapaPresentacion.AppCode.BLL
             param[15] = new SqlParameter("@p_trabajo_enAlturas", trabajo_enAlturas);
             param[16] = new SqlParameter("@p_trabajo_equipoMovil", trabajo_equipoMovil);
             param[17] = new SqlParameter("@p_trabajo_espacioConfinado", trabajo_espacioConfinado);
+            param[18] = new SqlParameter("@p_acepto_terminos", acepto_terminos);
 
             return objDBBridge.ExecuteNonQuery("spInsertAstFormato", param);
         }
@@ -117,7 +119,7 @@ namespace CapaPresentacion.AppCode.BLL
 
         public int DocAstFormato_Upd()
         {
-            SqlParameter[] param = new SqlParameter[17];
+            SqlParameter[] param = new SqlParameter[18];
             param[0] = new SqlParameter("@p_area", area);
             param[1] = new SqlParameter("@p_hora_inicio", hora_inicio);
             param[2] = new SqlParameter("@p_hora_fin", hora_fin);
@@ -135,6 +137,7 @@ namespace CapaPresentacion.AppCode.BLL
             param[14] = new SqlParameter("@p_trabajo_enAlturas", trabajo_enAlturas);
             param[15] = new SqlParameter("@p_trabajo_equipoMovil", trabajo_equipoMovil);
             param[16] = new SqlParameter("@p_trabajo_espacioConfinado", trabajo_espacioConfinado);
+            param[17] = new SqlParameter("@p_acepto_terminos", acepto_terminos);
 
             return objDBBridge.ExecuteNonQuery("spUpdateAstFormato", param);
         }
@@ -223,6 +226,27 @@ namespace CapaPresentacion.AppCode.BLL
 
             return objDBBridge.ExecuteNonQuery("spInsBitacoraComite", param);
         }
+
+        public int EstatusAstCancelado_Upd()
+        {
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@p_astid", ast_id);
+            param[1] = new SqlParameter("@p_estatus", estatus);
+           
+
+            return objDBBridge.ExecuteNonQuery("spUpdateEstatusAST_cancelado", param);
+        }
+
+        public DataSet ExisteDatoEnComiteDelDocto()
+        {
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@p_astid", ast_id);
+
+            return objDBBridge.ExecuteDataset("spExisteDatoEnComiteDelDocto", param);
+
+        }
+
+
         #endregion
 
     }

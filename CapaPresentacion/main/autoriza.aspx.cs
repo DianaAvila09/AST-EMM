@@ -115,7 +115,7 @@ namespace CapaPresentacion.main
 
         protected bool MotivoRequerido()
         {
-            if (this.txtMotivo.Text == "")
+            if (this.txtMotivo.Text == "" || this.txtMotivo.Text == string.Empty)
             {
                 return false;
             }
@@ -154,6 +154,8 @@ namespace CapaPresentacion.main
 
             DataTable dt = new DataTable();
             objDocAst.ast_id = _astid;
+
+            this.lblFolio.Value = _astid;
 
             dt = objDocAst.DocAstFormato_Sel().Tables[0];
             if (dt.Rows.Count != 0)

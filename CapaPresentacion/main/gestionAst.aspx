@@ -63,30 +63,30 @@
                             <%--<FilterControl AutoUpdatePosition="False"></FilterControl>--%>
                             </SettingsPopup>
                             <Columns>
-                                <dx:GridViewDataTextColumn Caption="Num. Documento" VisibleIndex="0" FieldName="nombre_docto" Width="200px">
+                                <dx:GridViewDataTextColumn Caption="Num. Documento" VisibleIndex="1" FieldName="nombre_docto" Width="200px">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn Caption="Fecha" VisibleIndex="3" FieldName="fecha_creacion" Width="100px">
+                                <dx:GridViewDataTextColumn Caption="Fecha" VisibleIndex="4" FieldName="fecha_creacion" Width="100px">
                                     <PropertiesTextEdit DisplayFormatString="dd/MMM/yyyy ">
                                     </PropertiesTextEdit>
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn Caption="Departamento" VisibleIndex="6" FieldName="dpto_nombre" Width="200px">
+                                <dx:GridViewDataTextColumn Caption="Departamento" VisibleIndex="7" FieldName="dpto_nombre" Width="200px">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn Caption="Contacto Planta" VisibleIndex="4" FieldName="email_contactoPlanta" Width="250px">
+                                <dx:GridViewDataTextColumn Caption="Contacto Planta" VisibleIndex="5" FieldName="email_contactoPlanta" Width="200px">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn Caption="Estatus" VisibleIndex="7" FieldName="estatus" Width="100px">
+                                <dx:GridViewDataTextColumn Caption="Estatus" VisibleIndex="8" FieldName="estatus" Width="100px">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn Caption="Empresa" FieldName="cia" VisibleIndex="2" Width="200px">
+                                <dx:GridViewDataTextColumn Caption="Empresa" FieldName="cia" VisibleIndex="3" Width="200px">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn Caption="Area" FieldName="area" VisibleIndex="5" Width="200px">
+                                <dx:GridViewDataTextColumn Caption="Area" FieldName="area" VisibleIndex="6" Width="200px">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn VisibleIndex="8" Width="100px">
+                                <dx:GridViewDataTextColumn VisibleIndex="9" Width="100px">
                                     <DataItemTemplate>
                                         <asp:LinkButton ID="LinkBtnPdf" runat="server" CommandArgument="<%# Container.VisibleIndex %>" Font-Underline="True" OnClick="LinkBtnPdf_Click">Visita PDF</asp:LinkButton>
                                     </DataItemTemplate>
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn FieldName="ast_id" Visible="False" VisibleIndex="9">
+                                <dx:GridViewDataTextColumn FieldName="ast_id" VisibleIndex="0" Caption="Folio" Width="80px">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn Caption="Elaboró" FieldName="elaboro" VisibleIndex="1" Width="200px">
+                                <dx:GridViewDataTextColumn Caption="Elaboró" FieldName="elaboro" VisibleIndex="2" Width="180px">
                                 </dx:GridViewDataTextColumn>
                             </Columns>
                             </dx:ASPxGridView>

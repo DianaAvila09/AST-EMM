@@ -31,6 +31,15 @@ namespace CapaPresentacion.main {
         protected global::DevExpress.Web.ASPxLabel lblFecha;
         
         /// <summary>
+        /// lblFolio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel lblFolio;
+        
+        /// <summary>
         /// lblArea control.
         /// </summary>
         /// <remarks>

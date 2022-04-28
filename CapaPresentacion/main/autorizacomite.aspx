@@ -33,6 +33,8 @@
 
                                     <h6 class="card-title">Fecha de creación</h6>
                                      <p class="card-text"><dx:ASPxLabel ID="lblFecha" runat="server" Text=""></dx:ASPxLabel></p>
+                                    <h6 class="card-title">Folio</h6>
+                                     <p class="card-text"><dx:ASPxLabel ID="lblFolio" runat="server" Text=""></dx:ASPxLabel></p>
                                     <h6 class="card-title">Area</h6>
                                      <p class="card-text"><dx:ASPxLabel ID="lblArea" runat="server" Text=""></dx:ASPxLabel></p>
                                     <h6 class="card-title">Descripción del trabajo a realizar</h6>

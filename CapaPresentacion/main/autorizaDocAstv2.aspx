@@ -18,9 +18,14 @@
     <form id="form1" runat="server">
          <div class="row">
             <div class="col">
-                <h3>Analisis de Seguridad en el Trabajo (AST)</h3>
-                <hr />
+                <h3>Analisis de Seguridad en el Trabajo (AST)</h3>              
             </div>
+             <div class="col-auto">
+                <label>Folio :</label>
+            </div>
+            <div class="col-auto">
+                <dx:ASPxTextBox ID="txtFolio" ReadOnly="true" runat="server" Width="180px" Theme="Aqua" BackColor="#F8F8F8"  Height="25px" Font-Names="Segoe UI" Font-Size="Medium"></dx:ASPxTextBox>
+            </div> 
              <div class="col-2" >
                 <asp:Button runat="server" CssClass="btn btn-success btn-block" Text="Autorizo"  ID="btnAutoriza" OnClick="btnAutoriza_Click" />
            </div>
@@ -29,6 +34,8 @@
            </div>
 
          </div>
+         <hr />
+
 
         <div class="row">
             <div class="col-auto">
@@ -520,7 +527,7 @@
         </asp:Panel>
 
 
-        <div class="row mt-5">
+       <%-- <div class="row mt-5">
             <div class="col">
                   <div class="card">
                       <div class="card-body" style="background-color:ghostwhite">
@@ -529,7 +536,7 @@
 
                   </div>
             </div>
-        </div>
+        </div>--%>
 
           <div class="row">
             <div class="col-auto">
@@ -802,7 +809,19 @@
            </div>
        </div>
 
-        
+        <div class="row mt-5">
+            <div class="col">             
+                <div>
+                    <dx:ASPxCheckBox  ID="chkTerminos" runat="server"   Text=" ACEPTO LOS TERMINOS Y CONDICIONES DE ESTE DOCUMENTO" Font-Size="Large" CheckState="Unchecked" ClientInstanceName="chkTerminoscli"  AutoPostBack="True">
+                    </dx:ASPxCheckBox>
+                </div>
+                    <div class="card">
+                        <div class="card-body" style="background-color:ghostwhite">
+                            Tengo Conocimiento del presente AST (ANALISIS DE SEGURIDAD EN EL TRABAJO), el cual he leido y comprendido de los riesgos y peligros que implica REALIZAR la tarea, asi como los las medidas de Seguridad implementadas para eliminar y controlar los riesgos y peligros, el cual me obligo y comprometo a seguir y respetar para prevenir los accidentes de trabjo.
+                        </div>
+                    </div>
+            </div>
+        </div>
 
        
         <br /> <br />

@@ -33,15 +33,15 @@ namespace CapaPresentacion.main
             if (!Page.IsPostBack)
             {
 
-
                 //if ((Session["useremail"] == null) || (Session["useremail"].ToString() == ""))
                 //{
                 //    Response.Redirect("../login.aspx");
                 //}
 
-
                 _astid = Convert.ToInt32(Request.QueryString["astid"]);
                 _comiteId = Convert.ToInt16(Request.QueryString["vigid"]);
+
+                txtFolio.Text = Convert.ToString(_astid);
 
 
                 this.lblMotivoRechazo.Visible = false;
@@ -165,6 +165,8 @@ namespace CapaPresentacion.main
                 chck1.Checked = Convert.ToBoolean(dr["trabajo_enAlturas"].ToString());
                 chck2.Checked = Convert.ToBoolean(dr["trabajo_equipoMovil"].ToString());
                 chck3.Checked = Convert.ToBoolean(dr["trabajo_espacioConfinado"].ToString());
+                chkTerminos.Checked = Convert.ToBoolean(dr["acepto_terminos"].ToString());
+
                 //_role = dr["rol_nombre"].ToString();
 
                 this.lblEstatus2.Text = dr["estatus"].ToString();

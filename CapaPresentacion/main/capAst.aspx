@@ -19,11 +19,19 @@
          <div class="row">
             <div class="col">
                 <h3>Analisis de Seguridad en el Trabajo (AST)</h3>
-                <hr />
+               
             </div>
+              <div class="col-auto">
+                <label>Folio :</label>
+            </div>
+            <div class="col-auto">
+                <dx:ASPxTextBox ID="txtFolio" ReadOnly="true" runat="server" Width="180px" Theme="Aqua" BackColor="#F8F8F8"  Height="25px" Font-Names="Segoe UI" Font-Size="Medium"></dx:ASPxTextBox>
+            </div>    
          </div>
+         <hr />
 
-        <div class="row">
+        <div class="row mt-3">
+           
             <div class="col-auto">
                 <label>Area :</label>
             </div>
@@ -511,16 +519,9 @@
            </div>
         </asp:Panel>
 
+        <%--Aqui iban los terminos--%>
 
-        <div class="row mt-5">
-            <div class="col">
-                  <div class="card">
-                      <div class="card-body" style="background-color:ghostwhite">
-                         Tengo Conocimiento del presente AST (ANALISIS DE SEGURIDAD EN EL TRABAJO), el cual he leido y comprendido de los riesgos y peligros que implica REALIZAR la tarea, asi como los las medidas de Seguridad implementadas para eliminar y controlar los riesgos y peligros, el cual me obligo y comprometo a seguir y respetar para prevenir los accidentes de trabjo.
-                      </div>
-                  </div>
-            </div>
-        </div>
+        
 
         <br />
 
@@ -793,28 +794,60 @@
                <dx:ASPxMemo ID="txtPlanRespuesta" runat="server" Height="150px" Width="100%" CssClass="form-control" MaxLength="500" Theme="Aqua" BackColor="#F8F8F8"></dx:ASPxMemo>
            </div>
        </div>
+         <asp:ScriptManager ID="ScriptManager1" runat="server">
+         </asp:ScriptManager>
 
-        <div class="row mt-5" >
-           <div class="col-auto" >
-                <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar"  ID="btnGrabar" OnClick="btnGrabar_Click"/>
-           </div>
-            <div class="col-auto" >
-                <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar y Enviar Notificacion"  Enabled="true" ID="btnGrabaFinal" OnClick="btnGrabaFinal_Click"/> 
-           </div>
-            <div class="col-auto" >
-                <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Cancelar"  ID="btnCancelar" OnClick="btnCancelar_Click" /> 
-           </div>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+             <ContentTemplate>
+                    <div class="row mt-5">
+                        <div class="col">             
+                            <div>
+                                <dx:ASPxCheckBox  ID="chkTerminos" runat="server"   Text=" ACEPTO LOS TERMINOS Y CONDICIONES DE ESTE DOCUMENTO" Font-Size="Large" CheckState="Unchecked" ClientInstanceName="chkTerminoscli" OnCheckedChanged="chkTerminos_CheckedChanged" AutoPostBack="True">
+                                </dx:ASPxCheckBox>
+                            </div>
+                              <div class="card">
+                                  <div class="card-body" style="background-color:ghostwhite">
+                                     Tengo Conocimiento del presente AST (ANALISIS DE SEGURIDAD EN EL TRABAJO), el cual he leido y comprendido de los riesgos y peligros que implica REALIZAR la tarea, asi como los las medidas de Seguridad implementadas para eliminar y controlar los riesgos y peligros, el cual me obligo y comprometo a seguir y respetar para prevenir los accidentes de trabjo.
+                                  </div>
+                              </div>
+                        </div>
+                    </div>
 
-             <div class="col-3 " >
+
+                    <div class="row mt-5" >
+                       <div class="col-auto" >
+                            <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar"  ID="btnGrabar" OnClick="btnGrabar_Click"/>
+                       </div>
+                        <div class="col-auto" >
+                            <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Guardar y Enviar Notificacion"  Enabled="true" ID="btnGrabaFinal" OnClick="btnGrabaFinal_Click"/> 
+                       </div>
+                        <div class="col-auto" >
+                            <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Cancelar"  ID="btnCancelar" OnClick="btnCancelar_Click" /> 
+                       </div>
+
+                         <div class="col-3 " >
                 
-             </div>
-             <div class="col-2 " >
-                <asp:Button runat="server" CssClass="btn btn-danger btn-block" Text="Eliminar documento"  ID="btnEliminar" OnClick="btnEliminar_Click" /> 
-           </div>
-       </div>
+                         </div>
+                         <div class="col-2 " >
+                            <asp:Button runat="server" CssClass="btn btn-danger btn-block" Text="Eliminar documento"  ID="btnEliminar" OnClick="btnEliminar_Click" /> 
+                       </div>
+                        <div class="col-2 " >
+                            <asp:Button runat="server" CssClass="btn btn-danger btn-block" Text="Cancelar documento"  ID="btnCancelDocto" OnClick="btnCancelDocto_Click" Visible="False"  /> 
+                       </div>
+                   </div>
 
+             </ContentTemplate>
+         </asp:UpdatePanel>
+
+        
+
+    <%--    <div>
+        </div>--%>
        
-        <br /> <br />
+        <br /> 
+        
+         
+         <br />
 
 
         <dx:ASPxHiddenField ID="hfIsNew" runat="server" ClientInstanceName="hfIsNew"> </dx:ASPxHiddenField>

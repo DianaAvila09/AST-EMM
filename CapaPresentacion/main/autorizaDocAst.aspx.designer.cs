@@ -22,6 +22,15 @@ namespace CapaPresentacion.main {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// txtFolio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtFolio;
+        
+        /// <summary>
         /// btnAutoriza control.
         /// </summary>
         /// <remarks>
@@ -1217,6 +1226,15 @@ namespace CapaPresentacion.main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxMemo txtPlanRespuesta;
+        
+        /// <summary>
+        /// chkTerminos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCheckBox chkTerminos;
         
         /// <summary>
         /// hfIsNew control.
